@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithRedirect, signOut, getAuth } from "@firebase/auth"
+import { GoogleAuthProvider, signInWithPopup, signOut, getAuth } from "@firebase/auth"
 import { app } from "./firebase"
 
 const authApp = getAuth(app);
@@ -10,7 +10,7 @@ const signInWithGoogle = async () => {
     provider.addScope("profile");
 
     try {
-        await signInWithRedirect(authApp, provider);
+        await signInWithPopup(authApp, provider);
     } catch (error) {
         // Do something
         console.error(error)
