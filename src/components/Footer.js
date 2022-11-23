@@ -32,12 +32,12 @@ export const Footer = () => {
           <div className="flex">
             <p className="mr-1 text-gray-100">Email:</p>
             <a
-              href="mailto:info@lorem.mail"
+              href="mailto:vtapp.convenor@vitap.ac.in"
               aria-label="Our email"
               title="Our email"
               className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
-              info@lorem.mail
+              vtapp.convenor@vitap.ac.in
             </a>
           </div>
           <div className="flex">

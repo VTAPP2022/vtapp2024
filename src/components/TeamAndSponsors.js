@@ -9,7 +9,7 @@ function TeamAndSponsors() {
             <h1 className="text-5xl font-bold text-gray-50">Team</h1>
             <br />
             <p className="text-xl  text-gray-200">
-              graVITas is an experience, full of amusement and learning. But
+              VTAPP is an experience, full of amusement and learning. But
               creating this fascinating experience is no easy task. So here it
               is, an assemblage of extraordinary students and remarkable
               teachers, hand-picked by the organizing team, under the guidance
@@ -37,7 +37,7 @@ function TeamAndSponsors() {
             <br />
             <p className="text-xl text-gray-200">
               Vellore Institute of Technology has always strived towards
-              ensuring the technical development of the society. graVITas,
+              ensuring the technical development of the society. VTAPP,
               Asia's one of the largest technical fest, is one such initiative
               towards fulfilling this responsibility. And in this journey
               towards our goal, we have never been alone. Here are the many
