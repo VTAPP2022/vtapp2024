@@ -11,6 +11,8 @@ import Team from "./pages/Team";
 import { BrowserRouter,Routes, Switch, Route, Link } from "react-router-dom";
 import { onAuthStateChanged } from "@firebase/auth";
 import { authApp } from "./utils/auth";
+import { firestore } from "./utils/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 
@@ -22,11 +24,16 @@ function App() {
   useEffect(() => {
     const unsubscribeAuthChanges = onAuthStateChanged(authApp, (loggedInUser) => {
       if (loggedInUser) {
-        console.log({
-          uid: loggedInUser.uid,
+        const userDoc = {
           email: loggedInUser.email,
           name: loggedInUser.displayName,
           photoUrl: loggedInUser.photoURL
+        }
+        console.log({uid: loggedInUser.uid, ...userDoc});
+
+        setDoc(doc(firestore, "users", loggedInUser.uid), userDoc)
+        .catch(error => {
+          console.error(error);
         });
       }
       setUser(loggedInUser);
