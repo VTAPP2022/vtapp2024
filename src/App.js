@@ -9,11 +9,32 @@ import Comingsoon from "./pages/Comingsoon";
 import Team from "./pages/Team";
 
 import { BrowserRouter,Routes, Switch, Route, Link } from "react-router-dom";
+import { onAuthStateChanged } from "@firebase/auth";
+import { authApp } from "./utils/auth";
 import Home from "./pages/Home";
+import { useEffect, useState } from "react";
 
 
 
 function App() {
+  const [user, setUser] = useState(authApp.currentUser);
+
+  useEffect(() => {
+    const unsubscribeAuthChanges = onAuthStateChanged(authApp, (loggedInUser) => {
+      if (loggedInUser) {
+        console.log({
+          uid: loggedInUser.uid,
+          email: loggedInUser.email,
+          name: loggedInUser.displayName,
+          photoUrl: loggedInUser.photoURL
+        });
+      }
+      setUser(loggedInUser);
+    });
+
+    return unsubscribeAuthChanges;
+  }, [])
+
   return (
     <div className="bg-black min-h-screen scroll-smooth">
       {/* <AppHeader />
@@ -26,7 +47,7 @@ function App() {
       <Footer/> */}
 
       <BrowserRouter>
-        <AppHeader />
+        <AppHeader currentUser={user}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Comingsoon />} />

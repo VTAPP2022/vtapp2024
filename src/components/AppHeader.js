@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import logo from  "../assets/vtappnewlogo.svg"
 import { Link } from "react-router-dom";
+import { signInWithGoogle, signOutGoogle } from "../utils/auth"
 
-function AppHeader() {
+function AppHeader({ currentUser }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // #toggle_nav:checked ~ div #hamburger #line
@@ -122,14 +123,14 @@ function AppHeader() {
               </div>
 
               <div class="mt-12 lg:mt-0">
-                <a
-                  href="#"
+                <button
                   class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  onClick={!currentUser ? signInWithGoogle : signOutGoogle}
                 >
                   <span class="relative text-sm font-semibold text-white">
-                    Get Started
+                    {!currentUser ? "Login" : "Logout"}
                   </span>
-                </a>
+                </button>
               </div>
             </div>
           </div>
