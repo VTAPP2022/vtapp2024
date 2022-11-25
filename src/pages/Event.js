@@ -1,5 +1,6 @@
 import React from "react";
 import EventCard from "../components/EventCard";
+import EventsList from "../data/events_list.json";
 
 function Event() {
   return (
@@ -17,38 +18,16 @@ function Event() {
           </div>
 
           <div className="flex flex-wrap justify-center mt-6">
-            <EventCard
-              EventName="TechEden"
-              EventDisc="Explore the artistic side of science with ChemDraw, create and visualize chemical structures, reactions, biological objects and pathways"
-              Organizer="Open Source Community"
-              Type="Hackathon"
-              Price="20000"
-              imgUrl="https://studentportal.vnit.ac.in/static/IMAGES/vnitnet_hackathon.png"
-            />
-            <EventCard
-              EventName="TechEden"
-              EventDisc="Explore the artistic side of science with ChemDraw, create and visualize chemical structures, reactions, biological objects and pathways"
-              Organizer="Open Source Community"
-              Type="Hackathon"
-              Price="20000"
-              imgUrl="https://studentportal.vnit.ac.in/static/IMAGES/vnitnet_hackathon.png"
-            />
-            <EventCard
-              EventName="TechEden"
-              EventDisc="Explore the artistic side of science with ChemDraw, create and visualize chemical structures, reactions, biological objects and pathways"
-              Organizer="Open Source Community"
-              Type="Hackathon"
-              Price="20000"
-              imgUrl="https://studentportal.vnit.ac.in/static/IMAGES/vnitnet_hackathon.png"
-            />
-            <EventCard
-              EventName="TechEden"
-              EventDisc="Explore the artistic side of science with ChemDraw, create and visualize chemical structures, reactions, biological objects and pathways"
-              Organizer="Open Source Community"
-              Type="Hackathon"
-              Price="20000"
-              imgUrl="https://studentportal.vnit.ac.in/static/IMAGES/vnitnet_hackathon.png"
-            />
+            {EventsList.map((e) => (
+              <EventCard
+                EventName={e.event_name}
+                EventDisc={e.description}
+                Organizer={e.organiser}
+                Type={e.event_type}
+                Price="20000"
+                imgUrl="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
+              />
+            ))}
           </div>
         </div>
       </section>

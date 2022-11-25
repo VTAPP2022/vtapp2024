@@ -8,6 +8,7 @@ import { Footer } from "./components/Footer";
 import Comingsoon from "./pages/Comingsoon";
 import Team from "./pages/Team";
 import Event from "./pages/Event";
+import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Switch, Route, Link } from "react-router-dom";
 import { onAuthStateChanged } from "@firebase/auth";
@@ -57,6 +58,7 @@ function App() {
       <Footer/> */}
 
       <BrowserRouter>
+        <ScrollToTop />
         <AppHeader currentUser={user} />
         <Routes>
           <Route path="/" element={<Home />} />
