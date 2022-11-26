@@ -12,6 +12,7 @@ OUTPUT_FILE_PATH = (
 )
 
 CSV_FILE_MAP = {
+    "event_id": 0,
     "organiser": 1,
     "event_name": 2,
     "event_type": 3,
