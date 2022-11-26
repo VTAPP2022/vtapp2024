@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EventData from "../data/Events.json";
+import { Link } from "react-router-dom";
 
 function Events() {
   const [index, setIndex] = useState(0);
@@ -33,11 +34,11 @@ function Events() {
     <div>
       <div className=" mx-auto p-16 sm:p-24 lg:px-48 bg-gray-200">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-5xl font-bold text-center text-gray-800">
+          <h1 className="text-5xl font-bold text-center text-gray-800 m-2">
             Events
           </h1>
           <br />
-          <p className="text-2xl text-center text-gray-800">
+          <p className="text-2xl text-center text-gray-800 m-5">
             "Technology driven transformation"- A theme chosen to show how
             diverse the applications of technology can be in our lives. The
             possibilities are limitless. And to make sure that you get an
@@ -107,8 +108,9 @@ function Events() {
           </button>
         </div>
         <div className="flex justify-center align-middle mt-16  ">
-
-        <button className="btn content-center ">Explore All Events</button>
+          <button className="btn content-center ">
+            <Link to="/events">Explore All Events</Link>
+          </button>
         </div>
       </div>
     </div>

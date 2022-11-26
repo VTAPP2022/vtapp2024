@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import logo from  "../assets/vtappnewlogo.svg"
+import logo from "../assets/vtappnewlogo.svg";
 import { Link } from "react-router-dom";
-import { signInWithGoogle, signOutGoogle } from "../utils/auth"
+import { signInWithGoogle, signOutGoogle } from "../utils/auth";
 
 function AppHeader({ currentUser }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,7 +92,7 @@ function AppHeader({ currentUser }) {
                       href="#"
                       class="block md:px-4 transition hover:text-primary"
                     >
-                      <a href="#about">About</a>
+                      <a href="/#about">About</a>
                     </span>
                   </li>
                   <li>

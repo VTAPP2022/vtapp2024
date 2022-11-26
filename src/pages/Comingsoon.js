@@ -10,7 +10,7 @@ function Comingsoon() {
             <h1 className="text-2xl font-bold text-gray-900">Coming Soon</h1>
             <p className="mt-2 text-sm text-gray-600">
               We're working hard to finish the development of this site. Our
-              target launch date is <strong>November 20</strong>! follow our
+              target launch date is <strong>November 29</strong>! follow our
               socilas to stay up to date with the latest news.
             </p>
           </div>
