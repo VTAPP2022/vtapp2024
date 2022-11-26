@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function TeamAndSponsors() {
   return (
-    <div className="flex min-h-screen flex-row lg:flex-row align-middle justify-center items-center bg-gray-900">
+    <div className="flex min-h-screen flex-col lg:flex-row align-middle justify-center items-center bg-gray-900">
       <div id="team">
         <div className="mx-auto p-10 lg:px-24 bg-gray-900 h-full">
           <div className="flex flex-col">
