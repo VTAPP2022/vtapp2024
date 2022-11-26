@@ -53,9 +53,12 @@ function Event() {
 
                 <button
                   className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
-                  onClick={() => setFilter("")}
+                  onClick={() => {
+                    setFilter("");
+                    setSearch("");
+                  }}
                 >
-                  Reset Filter
+                  Reset
                 </button>
               </div>
 
@@ -97,10 +100,10 @@ function Event() {
 
               if (search !== "") {
                 if (
-                  !e.event_name.toLowerCase().includes(search) &&
-                  !e.description.toLowerCase().includes(search) &&
-                  !e.organiser.toLowerCase().includes(search) &&
-                  !e.event_type.toLowerCase().includes(search)
+                  !e.event_name.toLowerCase().includes(search.toLowerCase()) &&
+                  !e.description.toLowerCase().includes(search.toLowerCase()) &&
+                  !e.organiser.toLowerCase().includes(search.toLowerCase()) &&
+                  !e.event_type.toLowerCase().includes(search.toLowerCase())
                 ) {
                   // TODO: Change this?
                   return;
@@ -114,6 +117,8 @@ function Event() {
                   Type={e.event_type}
                   Price="20000"
                   imgUrl="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
+                  filter={setFilter}
+                  search={setSearch}
                 />
               );
             })}
