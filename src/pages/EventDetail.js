@@ -5,7 +5,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 export const EventDetail = () => {
-  const params = useParams();
+  // eslint-disable-next-line no-unused-vars
+  const params = useParams(); // Remove above comment after we have all descriptions
 
   const [markdown, setDescription] = useState("");
   const [isLoading, setLoading] = useState(true);

@@ -1,5 +1,4 @@
 import React from "react";
-import vitap from "../assets/vitap.webp";
 
 function About() {
   return (

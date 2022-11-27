@@ -1,16 +1,11 @@
-import About from "./components/About";
 import AppHeader from "./components/AppHeader";
-import Hero from "./components/Hero";
-import Events from "./components/Events";
-import TeamAndSponsors from "./components/TeamAndSponsors";
-import TShirt from "./components/TShirt";
 import { Footer } from "./components/Footer";
 import Comingsoon from "./pages/Comingsoon";
 import Team from "./pages/Team";
 import Event from "./pages/Event";
 import ScrollToTop from "./components/ScrollToTop";
 
-import { BrowserRouter, Routes, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "@firebase/auth";
 import { authApp } from "./utils/auth";
 import { firestore } from "./utils/firestore";
