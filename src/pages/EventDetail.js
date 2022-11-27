@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const EventDetail = ({ eventType, eventName, organiser }) => {
+export const EventDetail = () => {
   // eslint-disable-next-line no-unused-vars
   const params = useParams(); // Remove above comment after we have all descriptions
 
