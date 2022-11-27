@@ -33,9 +33,13 @@ function AppHeader({ currentUser }) {
               onChange={() => setIsMenuOpen(!isMenuOpen)}
             />
             <div class="relative z-20 w-full flex justify-between lg:w-max md:px-0">
-              <a href="#" aria-label="logo" class="flex space-x-2 items-center">
-                <img src={logo} className="max-h-8" />
-              </a>
+              <Link
+                to="/"
+                aria-label="logo"
+                class="flex space-x-2 items-center"
+              >
+                <img src={logo} alt="VTAPP logo" className="max-h-8" />
+              </Link>
 
               <div class="relative flex items-center lg:hidden max-h-10">
                 <label
