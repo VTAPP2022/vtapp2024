@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const EventDetail = () => {
+export const EventDetail = ({ eventType, eventName, organiser }) => {
   // eslint-disable-next-line no-unused-vars
   const params = useParams(); // Remove above comment after we have all descriptions
 
   const [markdown, setDescription] = useState("");
+  const [event, setEvent] = useState({});
   const [isLoading, setLoading] = useState(true);
 
   const loadMarkdown = () => {
@@ -18,9 +19,18 @@ export const EventDetail = () => {
     ).then((resp) =>
       resp.text().then((data) => {
         setDescription(data);
-        setLoading(false);
       })
     );
+    fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
+      resp.json().then((data) => {
+        const ev = data.filter((e) => e.event_id === params.id);
+        if (ev.length === 0) {
+          return; // Need a error component
+        }
+        setEvent(ev[0]);
+      })
+    );
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -34,13 +44,15 @@ export const EventDetail = () => {
       <article className="max-w-4xl px-6 py-24 mx-auto space-y-12">
         <div className="w-full mx-auto space-y-4 text-center">
           <p className="text-lg font-semibold tracking-wider uppercase">
-            Codeathon
+            {event.event_type}
           </p>
           <h1 className="font-bold leading-tight text-5xl md:text-7xl">
-            TechEden 2.0
+            {event.event_name}
           </h1>
-          <p className="text-sm dark:text-gray-400">
-            <span className="text-md"> OpenSource Community </span>
+          <p className="text-sm text-gray-400">
+            Organised By:
+            <br />
+            <span className="text-lg text-gray-200"> {event.organiser} </span>
           </p>
         </div>
         <div
@@ -50,7 +62,7 @@ export const EventDetail = () => {
           <img
             className="absolute inset-0 w-full h-full object-cover object-center"
             src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="TechEden 2.0"
+            alt={event.event_name}
           />
         </div>
 
