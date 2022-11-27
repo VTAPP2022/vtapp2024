@@ -6,12 +6,13 @@ from pathlib import Path
 CURRENT_DIR = Path(__file__).parent
 INPUT_FILE_PATH = CURRENT_DIR / "events.csv" if len(sys.argv) < 2 else Path(sys.argv[1])
 OUTPUT_FILE_PATH = (
-    CURRENT_DIR / "../src/data/events_list.json"
+    CURRENT_DIR / "../public/data/events_list.json"
     if len(sys.argv) < 3
     else Path(sys.argv[2])
 )
 
 CSV_FILE_MAP = {
+    "event_id": 0,
     "organiser": 1,
     "event_name": 2,
     "event_type": 3,

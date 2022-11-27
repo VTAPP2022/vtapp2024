@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
-import EventsList from "../data/events_list.json";
 
 function Event() {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
   const [events, setEvents] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  const loadEvents = () => {
+    fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
+      resp.json().then((data) => {
+        setEvents(data);
+      })
+    );
+    setLoading(false);
+  };
 
   useEffect(() => {
-    setEvents(EventsList);
-  }, []);
+    if (isLoading) {
+      loadEvents();
+    }
+  });
 
   return (
     <div>
@@ -111,6 +122,7 @@ function Event() {
               }
               return (
                 <EventCard
+                  eventId={e.event_id}
                   EventName={e.event_name}
                   EventDisc={e.description}
                   Organizer={e.organiser}

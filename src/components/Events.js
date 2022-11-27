@@ -1,10 +1,27 @@
-import React, { useState } from "react";
-import EventData from "../data/Events.json";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function Events() {
+  const [EventData, setEventData] = useState([]);
   const [index, setIndex] = useState(0);
-  const [event, setEvent] = useState(EventData[index]);
+  const [event, setEvent] = useState({});
+  const [isLoading, setLoading] = useState(true);
+
+  const loadEvents = () => {
+    fetch(`${process.env.PUBLIC_URL}/data/Events.json`).then((resp) =>
+      resp.json().then((data) => {
+        setEventData(data);
+        setEvent(data[index]);
+      })
+    );
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (isLoading) {
+      loadEvents();
+    }
+  });
 
   const handleNext = () => {
     if (index < EventData.length - 1) {
@@ -108,9 +125,9 @@ function Events() {
           </button>
         </div>
         <div className="flex justify-center align-middle mt-16  ">
-          <button className="btn content-center ">
-            <Link to="/events">Explore All Events</Link>
-          </button>
+          <Link className="btn content-center " to="/events">
+            Explore All Events
+          </Link>
         </div>
       </div>
     </div>

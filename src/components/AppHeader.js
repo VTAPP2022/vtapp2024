@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import logo from "../assets/vtappnewlogo.svg";
 import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { signInWithGoogle, signOutGoogle } from "../utils/auth";
 
 function AppHeader({ currentUser }) {
@@ -92,7 +93,7 @@ function AppHeader({ currentUser }) {
                       href="#"
                       class="block md:px-4 transition hover:text-primary"
                     >
-                      <a href="/#about">About</a>
+                      <HashLink to="/#about">About</HashLink>
                     </span>
                   </li>
                   <li>
