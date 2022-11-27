@@ -17,9 +17,9 @@ function TeamAndSponsors() {
             </p>
             <br />
             <div>
-              <button className="rounded-md btn btn-primary">
-                <Link to="/team">Meet the Team</Link>
-              </button>
+              <Link className="rounded-md btn btn-primary" to="/team">
+                Meet the Team
+              </Link>
             </div>
 
             <br />
@@ -41,7 +41,9 @@ function TeamAndSponsors() {
             </p>
             <br />
             <div>
-              <button className="rounded-md btn btn-primary">More..</button>
+              <Link className="rounded-md btn btn-primary" to="/sponsors">
+                More..
+              </Link>
             </div>
             <br />
           </div>

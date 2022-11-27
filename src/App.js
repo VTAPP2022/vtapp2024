@@ -17,6 +17,7 @@ import { firestore } from "./utils/firestore";
 import { setDoc, doc } from "firebase/firestore";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
+import { EventDetail } from "./pages/EventDetail";
 
 function App() {
   const [user, setUser] = useState(authApp.currentUser);
@@ -63,6 +64,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Event />} />
+          <Route path="/events/:id" element={<EventDetail />} />
           <Route path="/team" element={<Team />} />
           <Route path="/sponsors" element={<Comingsoon />} />
         </Routes>

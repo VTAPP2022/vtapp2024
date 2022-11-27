@@ -1,7 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function EventCard({
   imgUrl,
+  eventId,
   EventName,
   EventDisc,
   Organizer,
@@ -36,13 +38,16 @@ function EventCard({
           </span> */}
         </div>
         <br />
-        <div className="px-6 pb-4 mt-auto">
-          <button className="rounded-md p-2 bg-green-400 text-black mr-3">
+        <div className="px-6 pb-4 mt-auto mb-3">
+          <Link
+            className="rounded-md p-3 bg-green-400 text-black mr-3"
+            to={`/events/${eventId}`}
+          >
             Read more
-          </button>
-          <button className="rounded-md p-2 bg-green-400 text-black">
+          </Link>
+          <Link className="rounded-md p-3 bg-green-400 text-black">
             Register now
-          </button>
+          </Link>
         </div>
       </div>
     </div>
