@@ -2,26 +2,64 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
 
-function Event() {
+function Event({ events }) {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
-  const [events, setEvents] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [currentEvents, setCurrentEvents] = useState(events);
+  const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const loadEvents = () => {
-    fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
-      resp.json().then((data) => {
-        setEvents(data);
-      })
-    );
-    setLoading(false);
+  const eventList = filter || search ? filteredEvents : currentEvents;
+
+  const sortEvents = (eventsL) => {
+    const nonDefaultPoster = [];
+    const defaultPoster = [];
+
+    eventsL.forEach((e) => {
+      if (e.poster_url === "https://i.imgur.com/2jzM0wr.jpg") {
+        defaultPoster.push(e);
+      } else {
+        nonDefaultPoster.push(e);
+      }
+    });
+    return [...nonDefaultPoster, ...defaultPoster];
   };
 
   useEffect(() => {
-    if (isLoading) {
-      loadEvents();
+    setCurrentEvents(sortEvents(events));
+  }, [events]);
+
+  const onSearch = (term) => {
+    setSearch(term);
+    if (search !== "") {
+      const eList = filter ? filteredEvents : currentEvents;
+      setFilteredEvents(
+        sortEvents(
+          eList.filter((e) => {
+            return (
+              e.event_name.toLowerCase().includes(search.toLowerCase()) ||
+              e.description.toLowerCase().includes(search.toLowerCase()) ||
+              e.organiser.toLowerCase().includes(search.toLowerCase()) ||
+              e.event_type.toLowerCase().includes(search.toLowerCase())
+            );
+          })
+        )
+      );
     }
-  });
+  };
+
+  const onFilter = (filter) => {
+    setFilter(filter);
+    if (filter !== "") {
+      const eList = search ? filteredEvents : currentEvents;
+      setFilteredEvents(
+        sortEvents(
+          eList.filter((e) => {
+            return e.event_type.toLowerCase().trim() === filter.toLowerCase();
+          })
+        )
+      );
+    }
+  };
 
   return (
     <div>
@@ -53,7 +91,7 @@ function Event() {
 
                 <input
                   type="text"
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e) => onSearch(e.target.value)}
                   value={search}
                   placeholder="Search for an event..."
                   class="px-8 py-3 w-full rounded-md bg-gray-100 text-sm text-gray-700 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
@@ -85,7 +123,7 @@ function Event() {
                   <select
                     className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
                     value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
+                    onChange={(e) => onFilter(e.target.value)}
                   >
                     <option value="">All Event Types</option>
                     <option value="codeathon">Codeathon</option>
@@ -100,36 +138,17 @@ function Event() {
           </div>
 
           <div className="flex flex-wrap justify-center mt-6">
-            {events.map((e) => {
-              if (filter !== "") {
-                if (
-                  e.event_type.toLowerCase().trim() !== filter.toLowerCase()
-                ) {
-                  // TODO: Change this?
-                  return;
-                }
-              }
-
-              if (search !== "") {
-                if (
-                  !e.event_name.toLowerCase().includes(search.toLowerCase()) &&
-                  !e.description.toLowerCase().includes(search.toLowerCase()) &&
-                  !e.organiser.toLowerCase().includes(search.toLowerCase()) &&
-                  !e.event_type.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  // TODO: Change this?
-                  return;
-                }
-              }
+            {eventList.map((e) => {
               return (
                 <EventCard
+                  key={e.event_id}
                   eventId={e.event_id}
                   EventName={e.event_name}
                   EventDisc={e.description}
                   Organizer={e.organiser}
                   Type={e.event_type}
-                  Price="20000"
-                  imgUrl="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
+                  Price={e.price}
+                  imgUrl={e.poster_url}
                   filter={setFilter}
                   search={setSearch}
                 />

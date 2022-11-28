@@ -1,21 +1,20 @@
-import React from 'react'
-import About from '../components/About';
-import Events from '../components/Events';
-import Hero from '../components/Hero';
-import TeamAndSponsors from '../components/TeamAndSponsors';
-import TShirt from '../components/TShirt';
-import Comingsoon from './Comingsoon';
+import React from "react";
+import About from "../components/About";
+import EventView from "../components/EventView";
+import Hero from "../components/Hero";
+import TeamAndSponsors from "../components/TeamAndSponsors";
+import TShirt from "../components/TShirt";
 
-function Home() {
+function Home({ events }) {
   return (
     <div>
-      <Hero/>
-      <About/>
-      <Events/>
-      <TeamAndSponsors/>
-      <TShirt/>
+      <Hero />
+      <About />
+      <EventView events={events} />
+      <TeamAndSponsors />
+      <TShirt />
     </div>
   );
 }
 
-export default Home
+export default Home;

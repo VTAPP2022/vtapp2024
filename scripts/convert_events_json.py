@@ -11,12 +11,27 @@ OUTPUT_FILE_PATH = (
     else Path(sys.argv[2])
 )
 
+
+def get_poster_link(poster: str):
+    if not poster or not poster.startswith("https://i.imgur.com"):
+        return "https://i.imgur.com/2jzM0wr.jpg"
+    return poster
+
+
+# https://drive.google.com/file/d/1ZdMZ4PDcifBBLoxveP8S1XcnwG5XyqJ7/view
 CSV_FILE_MAP = {
     "event_id": 0,
     "organiser": 1,
     "event_name": 2,
     "event_type": 3,
-    "description": 5,
+    "description": 6,
+    "price": 4,
+    "poster_url": 7,
+}
+
+FILTERS = {
+    "price": lambda p: p if p else 0,
+    "poster_url": get_poster_link,
 }
 
 if __name__ == "__main__":
@@ -30,7 +45,10 @@ if __name__ == "__main__":
         for row in events_reader:
             event = {}
             for key, value in CSV_FILE_MAP.items():
-                event[key] = row[value]
+                csv_val = row[value]
+                if key in FILTERS.keys():
+                    csv_val = FILTERS[key](csv_val)
+                event[key] = csv_val
             events.append(event)
 
     with open(OUTPUT_FILE_PATH, "w+") as output_json:

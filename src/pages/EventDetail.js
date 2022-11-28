@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export const EventDetail = () => {
+export const EventDetail = ({ events }) => {
   // eslint-disable-next-line no-unused-vars
   const params = useParams(); // Remove above comment after we have all descriptions
 
@@ -21,15 +21,12 @@ export const EventDetail = () => {
         setDescription(data);
       })
     );
-    fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
-      resp.json().then((data) => {
-        const ev = data.filter((e) => e.event_id === params.id);
-        if (ev.length === 0) {
-          return; // Need a error component
-        }
-        setEvent(ev[0]);
-      })
-    );
+
+    const ev = events.filter((e) => e.event_id === params.id);
+    if (ev.length === 0) {
+      return; // Need a error component
+    }
+    setEvent(ev[0]);
     setLoading(false);
   };
 
@@ -55,16 +52,12 @@ export const EventDetail = () => {
             <span className="text-lg text-gray-200"> {event.organiser} </span>
           </p>
         </div>
-        <div
-          className="relative w-full h-full overflow-hidden rounded-lg"
-          style={{ minHeight: "19rem" }}
-        >
-          <img
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt={event.event_name}
-          />
-        </div>
+
+        <img
+          className="w-full aspect-[16/9] rounded-md"
+          src={event.poster_url}
+          alt={event.event_name}
+        />
 
         <div className="dark:text-gray-100 prose lg:prose-xl">
           <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />

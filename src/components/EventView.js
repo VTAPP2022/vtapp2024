@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Events() {
+function EventView({ events }) {
   const [EventData, setEventData] = useState([]);
   const [index, setIndex] = useState(0);
   const [event, setEvent] = useState({});
   const [isLoading, setLoading] = useState(true);
 
-  const loadEvents = () => {
-    fetch(`${process.env.PUBLIC_URL}/data/Events.json`).then((resp) =>
-      resp.json().then((data) => {
-        setEventData(data);
-        setEvent(data[index]);
-      })
-    );
-    setLoading(false);
-  };
-
   useEffect(() => {
-    if (isLoading) {
-      loadEvents();
+    if (events.length > 0) {
+      const randomEvents = events
+        .filter(
+          (e) =>
+            e.poster_url !== "https://i.imgur.com/2jzM0wr.jpg" && e.description
+        )
+        .slice(0, 3);
+      setEventData(randomEvents);
+      setEvent(randomEvents[index]);
+      setLoading(false);
     }
-  });
+  }, [events, isLoading, index]);
 
   const handleNext = () => {
     if (index < EventData.length - 1) {
@@ -47,7 +45,7 @@ function Events() {
     }
   };
 
-  return (
+  return !isLoading ? (
     <div>
       <div className=" mx-auto p-16 sm:p-24 lg:px-48 bg-gray-200">
         <div className="flex flex-col items-center justify-center">
@@ -55,21 +53,14 @@ function Events() {
             Events
           </h1>
           <br />
-          <p className="text-2xl text-center text-gray-800 m-5">
-            "Technology driven transformation"- A theme chosen to show how
-            diverse the applications of technology can be in our lives. The
-            possibilities are limitless. And to make sure that you get an
-            personalised insight of this, we present to you a rich assortment of
-            events to be a part of. These events will present you a platform to
-            do what you want, be it to learn something new, or present your
-            skills and hold the audience spellbound, or to have a day full of
-            fun with you friends.
-          </p>
+          {/* <p className="text-2xl text-center text-gray-800 m-5">
+            {event.description}
+          </p> */}
           <br />
           <br />
         </div>
         <div
-          className="relative rounded-lg block md:flex items-center bg-gray-100 shadow-xl"
+          className="relative rounded-lg block md:flex items-center bg-gray-100 shadow-xl mt-5"
           style={{ minHeight: "19rem" }}
         >
           <div
@@ -78,25 +69,25 @@ function Events() {
           >
             <img
               className="absolute inset-0 w-full h-full object-cover object-center"
-              src={event.imgurl}
+              src={event.poster_url}
               alt=""
             />
             <div className="absolute inset-0 w-full h-full bg-indigo-900 opacity-75"></div>
             <div className="absolute inset-0 w-full h-full flex items-center justify-center fill-current text-white">
               <h1 className="text-6xl font-BebasNeue animate-fade">
-                {event.EventName}
+                {event.event_name}
               </h1>
             </div>
           </div>
           <div className="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
             <div className="p-12 md:pr-24 md:pl-16 md:py-12">
-              <p className="text-gray-600">{event.EventDec}</p>
+              <p className="text-gray-600">{event.description}</p>
               <a
                 className="flex items-baseline mt-3 text-indigo-600 hover:text-indigo-900 focus:text-indigo-900"
                 href={event.RegLink}
               >
-                <span>Register to the event</span>
-                <span className="text-xs ml-1">&#x279c;</span>
+                {/* <span>Register to the event</span> */}
+                {/* <span className="text-xs ml-1">&#x279c;</span> */}
               </a>
             </div>
             <svg
@@ -131,7 +122,7 @@ function Events() {
         </div>
       </div>
     </div>
-  );
+  ) : null;
 }
 
-export default Events;
+export default EventView;

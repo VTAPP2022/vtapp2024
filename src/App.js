@@ -16,6 +16,13 @@ import { EventDetail } from "./pages/EventDetail";
 
 function App() {
   const [user, setUser] = useState(authApp.currentUser);
+  const [events, setEvents] = useState([]);
+  const [isLoading, setLoading] = useState(true);
+
+  const sortEvents = (eventsL) => {
+    eventsL.sort(() => 0.5 - Math.random()).slice(0, eventsL.length);
+    return eventsL;
+  };
 
   useEffect(() => {
     const unsubscribeAuthChanges = onAuthStateChanged(
@@ -38,28 +45,27 @@ function App() {
         setUser(loggedInUser);
       }
     );
+    if (isLoading) {
+      fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
+        resp.json().then((data) => {
+          setEvents(sortEvents(data));
+        })
+      );
+      setLoading(false);
+    }
 
     return unsubscribeAuthChanges;
-  }, []);
+  }, [isLoading]);
 
   return (
     <div className="bg-black min-h-screen scroll-smooth">
-      {/* <AppHeader />
-      <Hero/>
-      <About/>
-      <Events/>
-      <TeamAndSponsors/>
-      <TShirt/>
-      <Comingsoon/>
-      <Footer/> */}
-
       <BrowserRouter>
         <ScrollToTop />
         <AppHeader currentUser={user} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Event />} />
-          <Route path="/events/:id" element={<EventDetail />} />
+          <Route path="/" element={<Home events={events} />} />
+          <Route path="/events" element={<Event events={events} />} />
+          <Route path="/events/:id" element={<EventDetail events={events} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/sponsors" element={<Comingsoon />} />
         </Routes>
