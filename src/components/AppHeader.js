@@ -82,7 +82,7 @@ function AppHeader({ currentUser }) {
                             peer-checked:scale-100 peer-checked:opacity-100 peer-checked:visible lg:shadow-none 
                             dark:shadow-none dark:bg-gray-800 dark:border-gray-700"
             >
-              <div class="text-gray-600 dark:text-gray-300 lg:pr-4 lg:w-auto w-full lg:pt-0">
+              <div class="text-white lg:pr-4 lg:w-auto w-full lg:pt-0">
                 <ul class="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0">
                   <li>
                     <span
