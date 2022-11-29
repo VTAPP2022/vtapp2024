@@ -28,44 +28,44 @@ function Event({ events }) {
     setCurrentEvents(sortEvents(events));
   }, [events]);
 
-  const onSearch = (term) => {
-    setSearch(term);
-    if (search !== "") {
-      const eList = filter ? filteredEvents : currentEvents;
-      setFilteredEvents(
-        sortEvents(
-          eList.filter((e) => {
-            return (
-              e.event_name.toLowerCase().includes(search.toLowerCase()) ||
-              e.description.toLowerCase().includes(search.toLowerCase()) ||
-              e.organiser.toLowerCase().includes(search.toLowerCase()) ||
-              e.event_type.toLowerCase().includes(search.toLowerCase())
-            );
-          })
-        )
+  const applyFilter = (filt, sTerm) => {
+    let fList = currentEvents;
+
+    if (filt !== "") {
+      fList = currentEvents.filter(
+        (e) => e.event_type.toLowerCase().trim() === filt.toLowerCase().trim()
       );
     }
+
+    if (sTerm !== "") {
+      fList = fList.filter((e) => {
+        return (
+          e.event_name.toLowerCase().includes(sTerm.toLowerCase()) ||
+          e.description.toLowerCase().includes(sTerm.toLowerCase()) ||
+          e.organiser.toLowerCase().includes(sTerm.toLowerCase()) ||
+          e.event_type.toLowerCase().includes(sTerm.toLowerCase())
+        );
+      });
+    }
+
+    return fList;
   };
 
-  const onFilter = (filter) => {
-    setFilter(filter);
-    if (filter !== "") {
-      const eList = search ? filteredEvents : currentEvents;
-      setFilteredEvents(
-        sortEvents(
-          eList.filter((e) => {
-            return e.event_type.toLowerCase().trim() === filter.toLowerCase();
-          })
-        )
-      );
-    }
+  const onSearch = (term) => {
+    setSearch(term);
+    setFilteredEvents(applyFilter(filter, term));
+  };
+
+  const onFilter = (f) => {
+    setFilter(f);
+    setFilteredEvents(applyFilter(f, search));
   };
 
   return (
     <div>
       <section className="bg-slate-900 flex flex-col">
         <div className="container px-6 py-10 mx-auto ">
-          <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
+          <h1 className="text-3xl font-semibold text-center capitalize lg:text-4xl text-white">
             Events
           </h1>
 
@@ -94,7 +94,7 @@ function Event({ events }) {
                   onChange={(e) => onSearch(e.target.value)}
                   value={search}
                   placeholder="Search for an event..."
-                  class="px-8 py-3 w-full rounded-md bg-gray-100 text-sm text-gray-700 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                  class="px-8 py-3 w-full rounded-md bg-gray-100 border-gray-500 text-sm text-gray-700 border-transparent focus:bg-white outline-none"
                 />
               </div>
 
@@ -149,8 +149,8 @@ function Event({ events }) {
                   Type={e.event_type}
                   Price={e.price}
                   imgUrl={e.poster_url}
-                  filter={setFilter}
-                  search={setSearch}
+                  filter={onFilter}
+                  search={onSearch}
                 />
               );
             })}

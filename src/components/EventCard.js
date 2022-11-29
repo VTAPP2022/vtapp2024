@@ -15,7 +15,12 @@ function EventCard({
   return (
     <div className="flex flex-col">
       <div className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-800 m-4 flex flex-col flex-1">
-        <img className="w-full aspect-[16/9]" src={imgUrl} alt={EventName} />
+        <img
+          className="w-full aspect-[16/9]"
+          src={imgUrl}
+          alt={EventName}
+          loading="lazy"
+        />
         <div className="px-6 py-4">
           <div className="text-white font-bold text-xl mb-2">{EventName}</div>
           <p className="text-gray-300 text-base">{EventDisc}</p>
