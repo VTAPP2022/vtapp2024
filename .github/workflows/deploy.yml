@@ -1,0 +1,22 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+        - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tomjschuster/cloudflare-pages-deploy-action@v0
+        with:
+          account-id: '${{ env.CF_ACCOUNT_ID }}'
+          project-name: '${{ env.PAGES_PROJECT_NAME }}'
+          api-key: '${{ secrets.CF_GLOBAL_APIKEY }}'
+          email: '${{ secrets.CF_EMAIL }}'
+          preview: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          CF_ACCOUNT_ID: 0b84f6d535b2d8b693182587dbed82c3
+          PAGES_PROJECT_NAME: vtapp
