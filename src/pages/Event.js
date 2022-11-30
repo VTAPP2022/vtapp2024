@@ -5,10 +5,12 @@ import EventCard from "../components/EventCard";
 function Event({ events }) {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
+  const [priceSort, setPriceSort] = useState("");
   const [currentEvents, setCurrentEvents] = useState(events);
   const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const eventList = filter || search ? filteredEvents : currentEvents;
+  const eventList =
+    filter || search || priceSort ? filteredEvents : currentEvents;
 
   const sortEvents = (eventsL) => {
     const nonDefaultPoster = [];
@@ -28,8 +30,8 @@ function Event({ events }) {
     setCurrentEvents(sortEvents(events));
   }, [events]);
 
-  const applyFilter = (filt, sTerm) => {
-    let fList = currentEvents;
+  const applyFilter = (filt, sTerm, sortVal) => {
+    let fList = [...currentEvents];
 
     if (filt !== "") {
       fList = currentEvents.filter(
@@ -48,17 +50,30 @@ function Event({ events }) {
       });
     }
 
+    if (sortVal !== "") {
+      if (sortVal === "p-low") {
+        fList.sort((e1, e2) => e1.price - e2.price);
+      } else if (sortVal === "p-high") {
+        fList.sort((e1, e2) => e2.price - e1.price);
+      }
+    }
+
     return fList;
   };
 
   const onSearch = (term) => {
     setSearch(term);
-    setFilteredEvents(applyFilter(filter, term));
+    setFilteredEvents(applyFilter(filter, term, priceSort));
   };
 
   const onFilter = (f) => {
     setFilter(f);
-    setFilteredEvents(applyFilter(f, search));
+    setFilteredEvents(applyFilter(f, search, priceSort));
+  };
+
+  const onSort = (s) => {
+    setPriceSort(s);
+    setFilteredEvents(applyFilter(filter, search, s));
   };
 
   return (
@@ -106,6 +121,7 @@ function Event({ events }) {
                   onClick={() => {
                     setFilter("");
                     setSearch("");
+                    setPriceSort("");
                   }}
                 >
                   Reset
@@ -114,11 +130,15 @@ function Event({ events }) {
 
               <div>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-                  {/* <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700">
-                    <option value="">All Organisers</option>
-                    <option value="">For Rent</option>
-                    <option value="for-sale">For Sale</option>
-                  </select> */}
+                  <select
+                    value={priceSort}
+                    onChange={(e) => onSort(e.target.value)}
+                    className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
+                  >
+                    <option value="">Sort</option>
+                    <option value="p-low">Price: Low to High</option>
+                    <option value="p-high">Price: High to Low</option>
+                  </select>
 
                   <select
                     className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
@@ -142,7 +162,6 @@ function Event({ events }) {
               return (
                 <EventCard
                   key={e.event_id}
-                  eventId={e.event_id}
                   EventName={e.event_name}
                   EventDisc={e.description}
                   Organizer={e.organiser}
