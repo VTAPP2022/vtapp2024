@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function EventCard({
   imgUrl,
-  eventId,
   EventName,
   EventDisc,
   Organizer,
@@ -41,6 +40,10 @@ function EventCard({
           {/* <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
             #winter
           </span> */}
+        </div>
+        <br />
+        <div className="px-6 pb-4 mt-auto mb-3">
+          <p className="text-lg font-bold text-gray-300">Entry Fee: ₹{Price}</p>
         </div>
 
         {/* // Uncomment below when event descriptions and registration exist */}
