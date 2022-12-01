@@ -18,15 +18,14 @@ def get_poster_link(poster: str):
     return poster
 
 
-# https://drive.google.com/file/d/1ZdMZ4PDcifBBLoxveP8S1XcnwG5XyqJ7/view
 CSV_FILE_MAP = {
     "event_id": 0,
     "organiser": 1,
     "event_name": 2,
     "event_type": 3,
-    "description": 6,
-    "price": 4,
-    "poster_url": 7,
+    "description": 7,
+    "price": 5,
+    "poster_url": 8,
 }
 
 FILTERS = {
