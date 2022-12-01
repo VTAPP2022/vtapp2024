@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 function EventCard({
   imgUrl,
-  eventId,
   EventName,
   EventDisc,
   Organizer,
@@ -15,7 +14,12 @@ function EventCard({
   return (
     <div className="flex flex-col">
       <div className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-800 m-4 flex flex-col flex-1">
-        <img className="w-full" src={imgUrl} alt={EventName} />
+        <img
+          className="w-full aspect-[16/9]"
+          src={imgUrl}
+          alt={EventName}
+          loading="lazy"
+        />
         <div className="px-6 py-4">
           <div className="text-white font-bold text-xl mb-2">{EventName}</div>
           <p className="text-gray-300 text-base">{EventDisc}</p>
@@ -39,6 +43,12 @@ function EventCard({
         </div>
         <br />
         <div className="px-6 pb-4 mt-auto mb-3">
+          <p className="text-lg font-bold text-gray-300">Entry Fee: ₹{Price}</p>
+        </div>
+
+        {/* // Uncomment below when event descriptions and registration exist */}
+        {/* <br />
+        <div className="px-6 pb-4 mt-auto mb-3">
           <Link
             className="rounded-md p-3 bg-green-400 text-black mr-3"
             to={`/events/${eventId}`}
@@ -48,7 +58,7 @@ function EventCard({
           <Link className="rounded-md p-3 bg-green-400 text-black">
             Register now
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

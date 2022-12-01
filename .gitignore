@@ -25,3 +25,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# data
+public/data/events_list.json
+scripts/events.csv

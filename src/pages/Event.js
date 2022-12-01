@@ -2,32 +2,85 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
 
-function Event() {
+function Event({ events }) {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
-  const [events, setEvents] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [priceSort, setPriceSort] = useState("");
+  const [currentEvents, setCurrentEvents] = useState(events);
+  const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const loadEvents = () => {
-    fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
-      resp.json().then((data) => {
-        setEvents(data);
-      })
-    );
-    setLoading(false);
+  const eventList =
+    filter || search || priceSort ? filteredEvents : currentEvents;
+
+  const sortEvents = (eventsL) => {
+    const nonDefaultPoster = [];
+    const defaultPoster = [];
+
+    eventsL.forEach((e) => {
+      if (e.poster_url === "https://i.imgur.com/2jzM0wr.jpg") {
+        defaultPoster.push(e);
+      } else {
+        nonDefaultPoster.push(e);
+      }
+    });
+    return [...nonDefaultPoster, ...defaultPoster];
   };
 
   useEffect(() => {
-    if (isLoading) {
-      loadEvents();
+    setCurrentEvents(sortEvents(events));
+  }, [events]);
+
+  const applyFilter = (filt, sTerm, sortVal) => {
+    let fList = [...currentEvents];
+
+    if (filt !== "") {
+      fList = currentEvents.filter(
+        (e) => e.event_type.toLowerCase().trim() === filt.toLowerCase().trim()
+      );
     }
-  });
+
+    if (sTerm !== "") {
+      fList = fList.filter((e) => {
+        return (
+          e.event_name.toLowerCase().includes(sTerm.toLowerCase()) ||
+          e.description.toLowerCase().includes(sTerm.toLowerCase()) ||
+          e.organiser.toLowerCase().includes(sTerm.toLowerCase()) ||
+          e.event_type.toLowerCase().includes(sTerm.toLowerCase())
+        );
+      });
+    }
+
+    if (sortVal !== "") {
+      if (sortVal === "p-low") {
+        fList.sort((e1, e2) => e1.price - e2.price);
+      } else if (sortVal === "p-high") {
+        fList.sort((e1, e2) => e2.price - e1.price);
+      }
+    }
+
+    return fList;
+  };
+
+  const onSearch = (term) => {
+    setSearch(term);
+    setFilteredEvents(applyFilter(filter, term, priceSort));
+  };
+
+  const onFilter = (f) => {
+    setFilter(f);
+    setFilteredEvents(applyFilter(f, search, priceSort));
+  };
+
+  const onSort = (s) => {
+    setPriceSort(s);
+    setFilteredEvents(applyFilter(filter, search, s));
+  };
 
   return (
     <div>
       <section className="bg-slate-900 flex flex-col">
         <div className="container px-6 py-10 mx-auto ">
-          <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">
+          <h1 className="text-3xl font-semibold text-center capitalize lg:text-4xl text-white">
             Events
           </h1>
 
@@ -53,10 +106,10 @@ function Event() {
 
                 <input
                   type="text"
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e) => onSearch(e.target.value)}
                   value={search}
                   placeholder="Search for an event..."
-                  class="px-8 py-3 w-full rounded-md bg-gray-100 text-sm text-gray-700 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
+                  class="px-8 py-3 w-full rounded-md bg-gray-100 border-gray-500 text-sm text-gray-700 border-transparent focus:bg-white outline-none"
                 />
               </div>
 
@@ -68,6 +121,7 @@ function Event() {
                   onClick={() => {
                     setFilter("");
                     setSearch("");
+                    setPriceSort("");
                   }}
                 >
                   Reset
@@ -76,16 +130,20 @@ function Event() {
 
               <div>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-                  {/* <select className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700">
-                    <option value="">All Organisers</option>
-                    <option value="">For Rent</option>
-                    <option value="for-sale">For Sale</option>
-                  </select> */}
+                  <select
+                    value={priceSort}
+                    onChange={(e) => onSort(e.target.value)}
+                    className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
+                  >
+                    <option value="">Sort</option>
+                    <option value="p-low">Price: Low to High</option>
+                    <option value="p-high">Price: High to Low</option>
+                  </select>
 
                   <select
                     className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
                     value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
+                    onChange={(e) => onFilter(e.target.value)}
                   >
                     <option value="">All Event Types</option>
                     <option value="codeathon">Codeathon</option>
@@ -100,38 +158,18 @@ function Event() {
           </div>
 
           <div className="flex flex-wrap justify-center mt-6">
-            {events.map((e) => {
-              if (filter !== "") {
-                if (
-                  e.event_type.toLowerCase().trim() !== filter.toLowerCase()
-                ) {
-                  // TODO: Change this?
-                  return;
-                }
-              }
-
-              if (search !== "") {
-                if (
-                  !e.event_name.toLowerCase().includes(search.toLowerCase()) &&
-                  !e.description.toLowerCase().includes(search.toLowerCase()) &&
-                  !e.organiser.toLowerCase().includes(search.toLowerCase()) &&
-                  !e.event_type.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  // TODO: Change this?
-                  return;
-                }
-              }
+            {eventList.map((e) => {
               return (
                 <EventCard
-                  eventId={e.event_id}
+                  key={e.event_id}
                   EventName={e.event_name}
                   EventDisc={e.description}
                   Organizer={e.organiser}
                   Type={e.event_type}
-                  Price="20000"
-                  imgUrl="https://expertus.ee/wp-content/uploads/2019/02/placeholder-16.9.jpg"
-                  filter={setFilter}
-                  search={setSearch}
+                  Price={e.price}
+                  imgUrl={e.poster_url}
+                  filter={onFilter}
+                  search={onSearch}
                 />
               );
             })}

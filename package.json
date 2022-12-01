@@ -26,6 +26,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "download:csv": "wget --no-check-certificate -O scripts/events.csv \"https://docs.google.com/spreadsheets/d/1WLVizFlIc-Iug8gf268rX0CQknRzgqwyMPgJgLhWtfM/export?gid=0&format=csv\"",
+    "generate:json": "python3.7 scripts/convert_events_json.py",
+    "deploy": "npm run download:csv && npm run generate:json && npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

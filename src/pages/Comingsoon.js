@@ -11,7 +11,7 @@ function Comingsoon() {
             <p className="mt-2 text-sm text-gray-600">
               We're working hard to finish the development of this site. Our
               target launch date is <strong>November 29</strong>! follow our
-              socilas to stay up to date with the latest news.
+              socials to stay up to date with the latest news.
             </p>
           </div>
         </div>
