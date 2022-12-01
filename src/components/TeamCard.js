@@ -9,7 +9,7 @@ function TeamCard({ imageUrl, name, designation }) {
         alt={name}
       />
 
-      <h1 className="mt-4 text-2xl font-semibold capitalize text-white">
+      <h1 className="mt-4 text-2xl font-semibold capitalize text-white text-center">
         {name}
       </h1>
 

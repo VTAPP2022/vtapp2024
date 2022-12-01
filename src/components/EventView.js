@@ -14,7 +14,7 @@ function EventView({ events }) {
           (e) =>
             e.poster_url !== "https://i.imgur.com/2jzM0wr.jpg" && e.description
         )
-        .slice(0, 3);
+        .slice(0, 5);
       setEventData(randomEvents);
       setEvent(randomEvents[index]);
       setLoading(false);
@@ -72,7 +72,7 @@ function EventView({ events }) {
               src={event.poster_url}
               alt=""
             />
-            <div className="absolute inset-0 w-full h-full bg-indigo-900 opacity-75"></div>
+            <div className="absolute inset-0 w-full h-full bg-green-900 opacity-75"></div>
             <div className="absolute inset-0 w-full h-full flex items-center justify-center fill-current text-white">
               <h1 className="text-6xl font-BebasNeue animate-fade">
                 {event.event_name}
@@ -83,7 +83,7 @@ function EventView({ events }) {
             <div className="p-12 md:pr-24 md:pl-16 md:py-12">
               <p className="text-gray-600">{event.description}</p>
               <a
-                className="flex items-baseline mt-3 text-indigo-600 hover:text-indigo-900 focus:text-indigo-900"
+                className="flex items-baseline mt-3 text-green-800 hover:text-green-900 focus:text-green-900"
                 href={event.RegLink}
               >
                 {/* <span>Register to the event</span> */}
@@ -99,7 +99,7 @@ function EventView({ events }) {
             </svg>
           </div>
           <button
-            className="btn absolute top-0 mt-32 left-0 bg-white rounded-full shadow-md h-12 w-12 text-2xl text-indigo-600 hover:text-indigo-400 focus:text-indigo-400 -ml-6 focus:outline-none focus:shadow-outline"
+            className="btn absolute top-0 mt-32 left-0 bg-white rounded-full shadow-md h-12 w-12 text-2xl text-green-600 hover:text-green-400 focus:text-green-400 -ml-6 focus:outline-none focus:shadow-outline"
             onClick={handlePrev}
           >
             <span className="block" style={{ transform: "scale(-1)" }}>
@@ -107,7 +107,7 @@ function EventView({ events }) {
             </span>
           </button>
           <button
-            className="btn absolute top-0 mt-32 right-0 bg-white rounded-full shadow-md h-12 w-12 text-2xl text-indigo-600 hover:text-indigo-400 focus:text-indigo-400 -mr-6 focus:outline-none focus:shadow-outline"
+            className="btn absolute top-0 mt-32 right-0 bg-white rounded-full shadow-md h-12 w-12 text-2xl text-green-600 hover:text-green-400 focus:text-green-400 -mr-6 focus:outline-none focus:shadow-outline"
             onClick={handleNext}
           >
             <span className="block" style={{ transform: "scale(1)" }}>
