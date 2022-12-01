@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { firestore } from "../utils/firestore";
 import { TicketCard } from "../components/TicketCard";
+import { DateOfBirth } from "../components/DateOfBirth";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 
@@ -9,6 +10,7 @@ const qrcodeRef = collection(firestore, "qrcodes");
 
 export const Ticket = () => {
   const ticket = React.useRef();
+  const [dob, setDob] = useState(new Date());
   const [applicationNo, setApplicationNo] = useState("");
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [applicantDetails, setApplicantDetails] = useState({});
@@ -83,15 +85,14 @@ export const Ticket = () => {
         <div className="xl:w-96 mx-auto">
           <label
             for="exampleFormControlInput1"
-            className="form-label inline-block mb-2 text-white text-xl"
+            className="form-label inline-block mb-2 text-white text-lg text-center w-full"
           >
             Application number
           </label>
-          <div className="flex flex-row gap-4">
-            <input
-              type="tel"
-              onChange={(e) => setApplicationNo(e.target.value)}
-              className="
+          <input
+            type="tel"
+            onChange={(e) => setApplicationNo(e.target.value)}
+            className="
         form-control
         block
         w-full
@@ -108,21 +109,39 @@ export const Ticket = () => {
         m-0
         focus:text-gray-700 focus:bg-white focus:outline-none
       "
-              id="exampleFormControlInput1"
-              placeholder="2022014521"
-            />
-            <button
-              className="inline-block bg-gray-100 px-3
-        py-1.5 text-sm font-semibold text-gray-700 mr-2 rounded-md"
-              onClick={(e) => onSubmit(e)}
-            >
-              Submit
-            </button>
-          </div>
+            id="exampleFormControlInput1"
+            placeholder="2022014521"
+          />
         </div>
         <div className="mt-10 mx-auto">
+          <label
+            for="exampleFormControlInput1"
+            className="form-label inline-block mb-2 text-white text-lg text-center w-full"
+          >
+            Date of Birth
+          </label>
+          <DateOfBirth setSelectedDate={setDob} selectedDate={dob} />
+        </div>
+        <div className="mt-10 mx-auto">
+          <button
+            disabled={
+              dob.toDateString() === new Date().toDateString() || !applicationNo
+            }
+            className="inline-block bg-green-300 disabled:bg-gray-50 px-3 py-1.5 text-sm font-semibold text-gray-700 rounded-md"
+            onClick={(e) => onSubmit(e)}
+          >
+            Submit
+          </button>
+        </div>
+
+        <div
+          className={
+            "mt-10 mx-auto" + registeredEvents.length > 0
+              ? "visible"
+              : "invisible"
+          }
+        >
           <select
-            disabled={!registeredEvents.length > 0}
             onChange={(e) => {
               if (!e.target.value) {
                 setChosenEvent({});
