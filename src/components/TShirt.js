@@ -32,7 +32,7 @@ const TShirt = () => {
             <div className="flex items-start justify-between mt-4 space-x-4">
               <div>
                 <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  <a href="#" title="">
+                  <div title="">
                     Collared T-Shirt
                     <br />
                     Lacoste Fabric (High end Cotton fabric)
@@ -40,7 +40,7 @@ const TShirt = () => {
                       className="absolute inset-0"
                       aria-hidden="true"
                     ></span>
-                  </a>
+                  </div>
                 </h3>
               </div>
 
@@ -69,7 +69,7 @@ const TShirt = () => {
             <div className="flex items-start justify-between mt-4 space-x-4">
               <div>
                 <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  <a href="#" title="">
+                  <div title="">
                     Collared T-Shirt
                     <br />
                     Lacoste Fabric (High end Cotton fabric)
@@ -77,7 +77,7 @@ const TShirt = () => {
                       className="absolute inset-0"
                       aria-hidden="true"
                     ></span>
-                  </a>
+                  </div>
                 </h3>
               </div>
 
@@ -104,7 +104,7 @@ const TShirt = () => {
             <div className="flex items-start justify-between mt-4 space-x-4">
               <div>
                 <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  <a href="#" title="">
+                  <div title="">
                     Hoodie
                     <br />
                     Fine Quality Clothing
@@ -112,7 +112,7 @@ const TShirt = () => {
                       className="absolute inset-0"
                       aria-hidden="true"
                     ></span>
-                  </a>
+                  </div>
                 </h3>
               </div>
 

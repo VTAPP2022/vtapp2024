@@ -13,6 +13,7 @@ import { setDoc, doc } from "firebase/firestore";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import { EventDetail } from "./pages/EventDetail";
+import HeaderInfo from "./components/HeaderInfo";
 
 function App() {
   const [user, setUser] = useState(authApp.currentUser);
@@ -62,6 +63,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <AppHeader currentUser={user} />
+
         <Routes>
           <Route path="/" element={<Home events={events} />} />
           <Route path="/events" element={<Event events={events} />} />

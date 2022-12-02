@@ -100,6 +100,13 @@ export const Footer = () => {
           >
             Sai Pranay
           </a>
+          {" & "}
+          <a
+            href="https://twitter.com/akhilcodes"
+            className="link"
+          >
+            Akhil Tulluri
+          </a>
         </p>
       </div>
     </div>
