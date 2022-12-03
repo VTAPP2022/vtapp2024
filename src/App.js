@@ -69,7 +69,7 @@ function App() {
           <Route path="/events/:id" element={<EventDetail events={events} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/sponsors" element={<Comingsoon />} />
-          <Route path="/tickets" element={<Ticket />} />
+          <Route path="/tickets" element={<Ticket events={events} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

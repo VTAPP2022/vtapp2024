@@ -23,9 +23,9 @@ CSV_FILE_MAP = {
     "organiser": 1,
     "event_name": 2,
     "event_type": 3,
-    "description": 7,
-    "price": 5,
-    "poster_url": 8,
+    "description": 6,
+    "price": 4,
+    "poster_url": 7,
 }
 
 FILTERS = {
