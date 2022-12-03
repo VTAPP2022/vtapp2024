@@ -47,18 +47,23 @@ function EventCard({
         </div>
 
         {/* // Uncomment below when event descriptions and registration exist */}
-        {/* <br />
+        <br />
         <div className="px-6 pb-4 mt-auto mb-3">
-          <Link
+          {/* <Link
             className="rounded-md p-3 bg-green-400 text-black mr-3"
             to={`/events/${eventId}`}
           >
             Read more
-          </Link>
-          <Link className="rounded-md p-3 bg-green-400 text-black">
+          </Link> */}
+          <a
+            className="rounded-md p-3 bg-green-500 text-black"
+            href="https://vtop1.vitap.ac.in/vtapp/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Register now
-          </Link>
-        </div> */}
+          </a>
+        </div>
       </div>
     </div>
   );
