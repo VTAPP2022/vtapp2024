@@ -6,21 +6,17 @@ import paidImg from "../assets/paid.png";
 
 export const TicketCard = ({ event }) => {
   return (
-    <div className="flex flex-col w-3/4 xl:w-1/3 bg-gray-900 h-full relative">
+    <div className="flex flex-col w-3/4 xl:w-1/2 bg-gray-900 h-full relative">
       <img
         src={paidImg}
         alt=""
         className="absolute bottom-5 right-0 h-32 md:h-40 lg:h-48"
       />
-      <div className="bg-black px-4 pt-4">
-        <img src={vtappLogo} alt="" className="max-h-6 " />
+      <div className="bg-black px-4 p-4">
+        <img src={vtappLogo} alt="vtapp logo" className="w-1/2" />
       </div>
       <div>
-        <img
-          src="https://images.pexels.com/photos/167514/pexels-photo-167514.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt=""
-          className="w-full"
-        />
+        <img src={event.poster_url} alt="Event poster" className="w-full" />
       </div>
       <div className="bg-white">
         <h1 className="p-4 text-2xl font-black text-black border-b border-gray-300">
