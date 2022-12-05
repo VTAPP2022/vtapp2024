@@ -3,9 +3,8 @@ import { useState } from "react";
 import logo from "../assets/vtappnewlogo.svg";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { signInWithGoogle, signOutGoogle } from "../utils/auth";
 
-function AppHeader({ currentUser }) {
+function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // #toggle_nav:checked ~ div #hamburger #line
@@ -127,6 +126,7 @@ function AppHeader({ currentUser }) {
                 </ul>
               </div>
 
+<<<<<<< HEAD
               <div class="mt-12 lg:mt-0">
                 <Link
                   class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max before:bg-green-600"
@@ -136,6 +136,19 @@ function AppHeader({ currentUser }) {
                     Grab Tickets
                   </span>
                 </Link>
+=======
+              <div className="mt-12 lg:mt-0">
+                <a
+                  className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  href="https://vtop1.vitap.ac.in/vtapp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span class="relative text-sm font-semibold text-gray-800">
+                    Register Now
+                  </span>
+                </a>
+>>>>>>> dev
               </div>
             </div>
           </div>
