@@ -3,9 +3,8 @@ import { useState } from "react";
 import logo from "../assets/vtappnewlogo.svg";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
-import { signInWithGoogle, signOutGoogle } from "../utils/auth";
 
-function AppHeader({ currentUser }) {
+function AppHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // #toggle_nav:checked ~ div #hamburger #line

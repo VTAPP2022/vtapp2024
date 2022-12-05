@@ -6,17 +6,11 @@ import Event from "./pages/Event";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { onAuthStateChanged } from "@firebase/auth";
-import { authApp } from "./utils/auth";
-import { firestore } from "./utils/firestore";
-import { setDoc, doc } from "firebase/firestore";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import { EventDetail } from "./pages/EventDetail";
-import HeaderInfo from "./components/HeaderInfo";
 
 function App() {
-  const [user, setUser] = useState(authApp.currentUser);
   const [events, setEvents] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -26,26 +20,6 @@ function App() {
   };
 
   useEffect(() => {
-    const unsubscribeAuthChanges = onAuthStateChanged(
-      authApp,
-      (loggedInUser) => {
-        if (loggedInUser) {
-          const userDoc = {
-            email: loggedInUser.email,
-            name: loggedInUser.displayName,
-            photoUrl: loggedInUser.photoURL,
-          };
-          console.log({ uid: loggedInUser.uid, ...userDoc });
-
-          setDoc(doc(firestore, "users", loggedInUser.uid), userDoc).catch(
-            (error) => {
-              console.error(error);
-            }
-          );
-        }
-        setUser(loggedInUser);
-      }
-    );
     if (isLoading) {
       fetch(`${process.env.PUBLIC_URL}/data/events_list.json`).then((resp) =>
         resp.json().then((data) => {
@@ -54,15 +28,13 @@ function App() {
       );
       setLoading(false);
     }
-
-    return unsubscribeAuthChanges;
   }, [isLoading]);
 
   return (
     <div className="bg-black min-h-screen scroll-smooth">
       <BrowserRouter>
         <ScrollToTop />
-        <AppHeader currentUser={user} />
+        <AppHeader />
 
         <Routes>
           <Route path="/" element={<Home events={events} />} />
