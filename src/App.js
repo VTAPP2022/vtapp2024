@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import { EventDetail } from "./pages/EventDetail";
+import Sponsors from "./pages/Sponsors";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -41,7 +42,7 @@ function App() {
           <Route path="/events" element={<Event events={events} />} />
           <Route path="/events/:id" element={<EventDetail events={events} />} />
           <Route path="/team" element={<Team />} />
-          <Route path="/sponsors" element={<Comingsoon />} />
+          <Route path="/sponsors" element={<Sponsors />} />
         </Routes>
         <Footer />
       </BrowserRouter>
