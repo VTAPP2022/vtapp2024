@@ -51,7 +51,7 @@ function AppHeader() {
                   <div
                     aria-hidden="true"
                     id="line"
-                    class="m-auto h-0.5 w-5 rounded bg-sky-900 dark:bg-gray-300 transition duration-300"
+                    class="m-auto h-0.5 w-5 rounded bg-gray-300 transition duration-300"
                     style={{
                       transform: isMenuOpen
                         ? "rotate(45deg) translate(0, 0.45rem)"
@@ -61,7 +61,7 @@ function AppHeader() {
                   <div
                     aria-hidden="true"
                     id="line2"
-                    class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 dark:bg-gray-300 transition duration-300"
+                    class="m-auto mt-2 h-0.5 w-5 rounded bg-gray-300 transition duration-300"
                     style={{
                       transform: isMenuOpen
                         ? "rotate(-45deg) translate(0, -0.45rem )"
