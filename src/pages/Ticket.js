@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { DateOfBirth } from "../components/DateOfBirth";
 import { TicketCard } from "../components/TicketCard";
+import ReactLoading from "react-loading";
 
 const CLOUD_FUNCTIONS_URL =
   "https://asia-south1-vtapp-70e92.cloudfunctions.net";
@@ -11,9 +12,12 @@ export const Ticket = ({ events }) => {
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [applicantDetails, setApplicantDetails] = useState({});
   const [chosenEvent, setChosenEvent] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [dropdown, showDropdown] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     const dobMonthRaw = dob.getMonth() + 1;
     const dobMonth =
       dobMonthRaw.toString().length > 1
@@ -24,12 +28,15 @@ export const Ticket = ({ events }) => {
       dobDateRaw.toString().length > 1
         ? dobMonthRaw.toString()
         : `0${dobDateRaw}`;
+
+    // IF application ID is of type for Individual tickets
     const resp = await fetch(
       `${CLOUD_FUNCTIONS_URL}/get_events?app_no=${applicationNo}&dob=${dobDate}-${dobMonth}-${dob.getFullYear()}`
     );
 
     if (resp.status !== 200) {
       alert("Failed fetching registration details");
+      setIsLoading(false);
       return;
     }
 
@@ -45,6 +52,8 @@ export const Ticket = ({ events }) => {
     };
 
     setApplicantDetails(applicant);
+    setIsLoading(false);
+    showDropdown(true);
   };
 
   return (
@@ -102,29 +111,39 @@ export const Ticket = ({ events }) => {
           </button>
         </div>
 
-        <div className="mt-10 mx-auto">
-          <select
-            onChange={(e) => {
-              if (!e.target.value) {
-                setChosenEvent({});
-                return;
-              }
-              const chosen = registeredEvents.find(
-                (event) => e.target.value === event.event_id
-              );
-              if (chosen) {
-                setChosenEvent(chosen);
-              }
-            }}
-            placeholder="Choose an event"
-            className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
-          >
-            <option value="">Choose an event</option>
-            {registeredEvents.map((event) => {
-              return <option value={event.event_id}>{event.event_name}</option>;
-            })}
-          </select>
-        </div>
+        {isLoading && (
+          <div className="mt-10 mx-auto">
+            <ReactLoading type="spin" color="#36D399" />
+          </div>
+        )}
+
+        {dropdown && (
+          <div className="mt-10 mx-auto">
+            <select
+              onChange={(e) => {
+                if (!e.target.value) {
+                  setChosenEvent({});
+                  return;
+                }
+                const chosen = registeredEvents.find(
+                  (event) => e.target.value === event.event_id
+                );
+                if (chosen) {
+                  setChosenEvent(chosen);
+                }
+              }}
+              placeholder="Choose an event"
+              className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700"
+            >
+              <option value="">Choose an event</option>
+              {registeredEvents.map((event) => {
+                return (
+                  <option value={event.event_id}>{event.event_name}</option>
+                );
+              })}
+            </select>
+          </div>
+        )}
 
         {Object.keys(chosenEvent).length > 0 && (
           <div className="flex flex-col my-12">
