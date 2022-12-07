@@ -19,8 +19,13 @@ export const Ticket = ({ events }) => {
       dobMonthRaw.toString().length > 1
         ? dobMonthRaw.toString()
         : `0${dobMonthRaw}`;
+    const dobDateRaw = dob.getDate();
+    const dobDate =
+      dobDateRaw.toString().length > 1
+        ? dobMonthRaw.toString()
+        : `0${dobDateRaw}`;
     const resp = await fetch(
-      `${CLOUD_FUNCTIONS_URL}/get_events?app_no=${applicationNo}&dob=${dob.getDate()}-${dobMonth}-${dob.getFullYear()}`
+      `${CLOUD_FUNCTIONS_URL}/get_events?app_no=${applicationNo}&dob=${dobDate}-${dobMonth}-${dob.getFullYear()}`
     );
 
     if (resp.status !== 200) {

@@ -46,7 +46,7 @@ function App() {
           <Route path="/team" element={<Team />} />
           <Route path="/tickets" element={<Ticket events={events} />} />
           <Route path="/sponsors" element={<Sponsors />} />
-          <Route path="/qrscan" element={<QRScan />} />
+          <Route path="/qrscan" element={<QRScan events={events} />} />
         </Routes>
         <Footer />
       </BrowserRouter>

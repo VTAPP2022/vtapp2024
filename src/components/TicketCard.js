@@ -3,13 +3,14 @@ import { QRCode } from "react-qrcode-logo";
 import logo from "../assets/vtapp_logo.jpg";
 import vtappLogo from "../assets/vtappnewlogo.svg";
 import paidImg from "../assets/paid.png";
+import expiredImg from "../assets/expired.png";
 
 export const TicketCard = ({ event }) => {
   return (
     <div className="flex flex-col w-3/4 xl:w-1/2 bg-gray-900 h-full relative">
       <img
-        src={paidImg}
-        alt=""
+        src={event.qrcode_expired ? expiredImg : paidImg}
+        alt="paid or expired logo"
         className="absolute bottom-5 right-0 h-32 md:h-40 lg:h-48"
       />
       <div className="bg-black px-4 p-4">
