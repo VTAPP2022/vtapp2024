@@ -26,15 +26,15 @@ export const QRScan = ({ events }) => {
       return;
     }
 
-    console.log(text);
-
     setInProcess(true);
 
-    if (!text.length === 20) {
+    const qrsplit = text.split("/");
+    if (!qrsplit[0] === "VTAPP") {
       alert("Invalid QRCode");
       return;
     }
-    const qrcodesRef = doc(firestore, "qrcodes", text);
+    const codeId = qrsplit[1];
+    const qrcodesRef = doc(firestore, "qrcodes", codeId);
     const docSnapshot = await getDoc(qrcodesRef);
 
     if (!docSnapshot.exists()) {
@@ -48,8 +48,6 @@ export const QRScan = ({ events }) => {
       alert("QRCode already expired");
       return;
     }
-
-    console.info(events);
 
     const event = events.find((e) => {
       console.info(e);
