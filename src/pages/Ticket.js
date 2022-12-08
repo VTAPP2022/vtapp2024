@@ -6,11 +6,12 @@ import ReactLoading from "react-loading";
 const CLOUD_FUNCTIONS_URL =
   "https://asia-south1-vtapp-70e92.cloudfunctions.net";
 
-export const Ticket = ({ events }) => {
+export const Ticket = () => {
   const [dob, setDob] = useState(new Date());
   const [applicationNo, setApplicationNo] = useState("");
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const [applicantDetails, setApplicantDetails] = useState({});
+  const [regType, setRegType] = useState({});
   const [chosenEvent, setChosenEvent] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [dropdown, showDropdown] = useState(false);
@@ -18,6 +19,7 @@ export const Ticket = ({ events }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    console.log(dob);
     const dobMonthRaw = dob.getMonth() + 1;
     const dobMonth =
       dobMonthRaw.toString().length > 1
@@ -26,10 +28,9 @@ export const Ticket = ({ events }) => {
     const dobDateRaw = dob.getDate();
     const dobDate =
       dobDateRaw.toString().length > 1
-        ? dobMonthRaw.toString()
+        ? dobDateRaw.toString()
         : `0${dobDateRaw}`;
 
-    // IF application ID is of type for Individual tickets
     const resp = await fetch(
       `${CLOUD_FUNCTIONS_URL}/get_events?app_no=${applicationNo}&dob=${dobDate}-${dobMonth}-${dob.getFullYear()}`
     );
@@ -40,10 +41,14 @@ export const Ticket = ({ events }) => {
       return;
     }
 
-    const data = await resp.json();
-    const details = data.applicantDetails;
+    const details = await resp.json();
 
     setRegisteredEvents(details.registered_events);
+    setRegType({
+      isBundle: details.isBundle || false,
+      isIndividual: details.isIndividual || false,
+      isEventPass: details.isEventPass || false,
+    });
 
     const applicant = {
       email: details.applicant_email,
@@ -53,7 +58,9 @@ export const Ticket = ({ events }) => {
 
     setApplicantDetails(applicant);
     setIsLoading(false);
-    showDropdown(true);
+    if (details.isIndividual) {
+      showDropdown(true);
+    }
   };
 
   return (
@@ -116,6 +123,14 @@ export const Ticket = ({ events }) => {
             <ReactLoading type="spin" color="#36D399" />
           </div>
         )}
+        {/* 
+        {regType.isBundle && (
+          <div className="flex flex-col my-12">
+            <div className="mx-auto justify-center flex">
+              <TicketCard event={} regType={regType} />
+            </div>
+          </div>
+        )} */}
 
         {dropdown && (
           <div className="mt-10 mx-auto">
@@ -148,7 +163,7 @@ export const Ticket = ({ events }) => {
         {Object.keys(chosenEvent).length > 0 && (
           <div className="flex flex-col my-12">
             <div className="mx-auto justify-center flex">
-              <TicketCard event={chosenEvent} />
+              <TicketCard event={chosenEvent} regType={regType} />
             </div>
           </div>
         )}

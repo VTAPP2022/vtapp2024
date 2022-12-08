@@ -5,7 +5,7 @@ import vtappLogo from "../assets/vtappnewlogo.svg";
 import paidImg from "../assets/paid.png";
 import expiredImg from "../assets/expired.png";
 
-export const TicketCard = ({ event }) => {
+export const TicketCard = ({ event, regType }) => {
   return (
     <div className="flex flex-col w-3/4 xl:w-1/2 bg-gray-900 h-full relative">
       <img
@@ -23,22 +23,28 @@ export const TicketCard = ({ event }) => {
         <h1 className="p-4 text-2xl font-black text-black border-b border-gray-300">
           {event.event_name}
         </h1>
-        <div className="pb-4 flex flex-row border-b border-gray-300">
-          <div>
-            <p className="text-xs font-light text-black px-4 pt-4">Date</p>
-            <p className="text-lg font-bold text-black px-4">
-              Sun, 11 Dec, 2022
-            </p>
-          </div>
-          <div className="justify-end ml-auto">
-            <p className="text-xs font-light text-black px-4 pt-4">Time</p>
-            <p className="text-lg font-bold text-black px-4">11:00 AM</p>
-          </div>
-        </div>
-        <div className="pb-4 border-b border-gray-300">
-          <p className="text-xs font-light text-black px-4 pt-4">Venue</p>
-          <p className="text-lg font-bold text-black px-4">AB-2 Auditorium</p>
-        </div>
+        {regType.isIndividual && (
+          <>
+            <div className="pb-4 flex flex-row border-b border-gray-300">
+              <div>
+                <p className="text-xs font-light text-black px-4 pt-4">Date</p>
+                <p className="text-lg font-bold text-black px-4">
+                  Sun, 11 Dec, 2022
+                </p>
+              </div>
+              <div className="justify-end ml-auto">
+                <p className="text-xs font-light text-black px-4 pt-4">Time</p>
+                <p className="text-lg font-bold text-black px-4">11:00 AM</p>
+              </div>
+            </div>
+            <div className="pb-4 border-b border-gray-300">
+              <p className="text-xs font-light text-black px-4 pt-4">Venue</p>
+              <p className="text-lg font-bold text-black px-4">
+                AB-2 Auditorium
+              </p>
+            </div>
+          </>
+        )}
       </div>
       <div className="flex flex-col bg-white pt-12">
         <p className="text-sm justify-center mx-auto text-black mb-4">
@@ -46,7 +52,7 @@ export const TicketCard = ({ event }) => {
         </p>
         <div className="justify-center mx-auto">
           <QRCode
-            value={event.doc_id}
+            value={`VTAPP/${event.doc_id}/${event.event_id}`}
             logoImage={logo}
             eyeColor={["#003B00", "#003B00", "#003B00"]}
             bgColor="#00FF41"
@@ -61,7 +67,7 @@ export const TicketCard = ({ event }) => {
       </div>
       <div className="flex flex-col bg-white py-3">
         <p className="justify-center mx-auto text-lg text-black font-medium">
-          Enjoy the event
+          Enjoy the event(s)
         </p>
       </div>
     </div>

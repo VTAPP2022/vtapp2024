@@ -26,6 +26,8 @@ export const QRScan = ({ events }) => {
       return;
     }
 
+    console.log(text);
+
     setInProcess(true);
 
     if (!text.length === 20) {
