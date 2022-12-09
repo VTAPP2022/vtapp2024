@@ -88,7 +88,7 @@ export const Ticket = () => {
         focus:text-gray-700 focus:bg-white focus:outline-none
       "
             id="exampleFormControlInput1"
-            placeholder="2022014521"
+            placeholder="2022123456 (or) VITAA221234"
           />
         </div>
         <div className="mt-10 mx-auto">
