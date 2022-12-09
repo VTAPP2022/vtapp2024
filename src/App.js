@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import { EventDetail } from "./pages/EventDetail";
 import Sponsors from "./pages/Sponsors";
+import Schedule from "./components/Schedule";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -43,6 +44,7 @@ function App() {
           <Route path="/events/:id" element={<EventDetail events={events} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/sponsors" element={<Sponsors />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
         <Footer />
       </BrowserRouter>
