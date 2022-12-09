@@ -24,7 +24,7 @@ export const QRScan = ({ events }) => {
         if (user) {
           const domain = user.email.split("@")[1];
 
-          if (!(domain === "vitap.ac.in" || domain === "vitstudent.ac.in")) {
+          if (!(domain === "vitap.ac.in" || domain === "vitapstudent.ac.in")) {
             alert("Only VITAP email can be used to login");
             signOutGoogle();
             return;

@@ -69,7 +69,7 @@ export const Ticket = () => {
           </label>
           <input
             type="text"
-            onChange={(e) => setApplicationNo(e.target.value)}
+            onChange={(e) => setApplicationNo(e.target.value.toUpperCase())}
             className="
         form-control
         block
