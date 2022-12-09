@@ -209,6 +209,145 @@ function Team() {
           </div>
         </div>
       </div>
+
+      <div className="container px-6 py-10 mx-auto ">
+        <h1 className="text-3xl font-semibold text-center capitalize lg:text-4xl text-white">
+          STUDENT ORGANISING TEAM
+        </h1>
+
+        <div className="flex justify-center mx-auto mt-2">
+          <span className="inline-block w-40 h-1 bg-green-500 rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-green-500 rounded-full"></span>
+          <span className="inline-block w-1 h-1 bg-green-500 rounded-full"></span>
+        </div>
+
+        <div className="container px-6 py-10 mx-auto ">
+          <br />
+          <h2 className="text-3xl text-green-700 text-center font-bold">
+            Event Team
+          </h2>
+          <div className="flex flex-wrap justify-center mt-6">
+            <TeamCard
+              name="Shashmit Kumar"
+              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              designation=""
+            />
+
+            <TeamCard
+              name="Raj Mishra"
+              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              designation=""
+            />
+
+            <TeamCard
+              name="Jasjot Singh"
+              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              designation=""
+            />
+          </div>
+          <br />
+          <br />
+          <br />
+          <h2 className="text-3xl text-green-700 text-center font-bold">
+            Web & Registrations
+          </h2>
+          <div className="flex flex-wrap justify-center mt-6">
+            <TeamCard
+              name="Sai Pranay"
+              imageUrl="https://i.imgur.com/GQ8a2Im.jpg"
+              designation=""
+            />
+
+            <TeamCard
+              name="Akhil"
+              imageUrl="https://i.imgur.com/gejaB9P.jpg"
+              designation=""
+            />
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <h2 className="text-3xl text-green-700 text-center font-bold">
+            Design Team
+          </h2>
+          <div className="flex flex-wrap justify-center mt-6">
+            <TeamCard
+              name="Sai Charan Venna"
+              imageUrl="https://i.imgur.com/UNnnLFD.jpg"
+              designation=""
+            />
+
+            <TeamCard
+              name="H.V Mallesh"
+              imageUrl="https://i.imgur.com/uSGZCfK.png"
+              designation=""
+            />
+
+            <TeamCard
+              name="S.SWARAJ"
+              imageUrl="https://i.imgur.com/U7Qn1Nb.jpeg"
+              designation=""
+            />
+
+            <TeamCard
+              name="Jayashish Segu"
+              imageUrl="https://i.imgur.com/MXLCmju.jpg"
+              designation=""
+            />
+
+            <TeamCard
+              name="Rion"
+              imageUrl="https://i.imgur.com/MpR8Akj.jpg"
+              designation=""
+            />
+
+            <TeamCard
+              name="Harsh Gupta"
+              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              designation=""
+            />
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <h2 className="text-3xl text-green-700 text-center font-bold">
+            Discipline
+          </h2>
+          <div className="flex flex-wrap justify-center mt-6">
+            <TeamCard
+              name="C YAGNESH"
+              imageUrl="https://i.imgur.com/IYelthT.png"
+              designation=""
+            />
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <h2 className="text-3xl text-green-700 text-center font-bold">
+            Finance Team
+          </h2>
+          <div className="flex flex-wrap justify-center mt-6">
+            <TeamCard
+              name="Amey Paresh"
+              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              designation=""
+            />
+            <TeamCard
+              name="Aditya Shrivastava"
+              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              designation=""
+            />
+            <TeamCard
+              name="Chaitanya Nagre"
+              imageUrl="https://i.imgur.com/WvybGtn.jpg"
+              designation=""
+            />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
