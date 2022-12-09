@@ -178,7 +178,7 @@ function Team() {
 
             <TeamCard
               name="Haritha P"
-              imageUrl="https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+              imageUrl="https://i.imgur.com/lh0hkTd.png"
               designation="Senior Manager, HR"
             />
             <TeamCard
@@ -190,6 +190,21 @@ function Team() {
               name="Dr. R. Nandha Kumar"
               imageUrl="https://vitap.ac.in/wp-content/uploads/2020/08/Nandha_70079.jpg"
               designation=""
+            />
+            <TeamCard
+              name="Chitti Babu Arigela"
+              imageUrl="https://i.imgur.com/0PdUXqI.jpg"
+              designation="Chief Engineer"
+            />
+            <TeamCard
+              name="Ravi Kumar thota"
+              imageUrl="https://i.imgur.com/GDmdokp.jpg"
+              designation="Digital Media"
+            />
+            <TeamCard
+              name="Shahida Bhanu"
+              imageUrl="https://i.imgur.com/ORHNQvs.jpg"
+              designation="Executive Area"
             />
           </div>
         </div>

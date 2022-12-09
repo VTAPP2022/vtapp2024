@@ -112,6 +112,14 @@ function AppHeader() {
                       href="#"
                       class="block md:px-4 transition hover:text-primary"
                     >
+                      <Link to="/schedule">Schedule</Link>
+                    </span>
+                  </li>
+                  <li>
+                    <span
+                      href="#"
+                      class="block md:px-4 transition hover:text-primary"
+                    >
                       <Link to="/team">Team</Link>
                     </span>
                   </li>

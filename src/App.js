@@ -11,6 +11,7 @@ import { EventDetail } from "./pages/EventDetail";
 import { Ticket } from "./pages/Ticket";
 import Sponsors from "./pages/Sponsors";
 import { QRScan } from "./pages/QRScan";
+import Schedule from "./components/Schedule";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/tickets" element={<Ticket events={events} />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/qrscan" element={<QRScan events={events} />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
         <Footer />
       </BrowserRouter>
