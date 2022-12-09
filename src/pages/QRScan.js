@@ -251,10 +251,8 @@ export const QRScan = ({ events }) => {
                   <QrReader
                     onScan={async (result) => {
                       await verifyQRCode(result);
-                      await sleep(1000);
                       setInProcess(false);
                     }}
-                    delay={1000}
                     onError={(error) => console.error(error)}
                     facingMode="environment"
                   />
