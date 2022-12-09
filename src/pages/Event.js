@@ -91,7 +91,16 @@ function Event({ events }) {
             <span className="inline-block w-3 h-1 mx-1 bg-green-500 rounded-full"></span>
             <span className="inline-block w-1 h-1 bg-green-500 rounded-full"></span>
           </div>
-
+          <br />
+          <div className="text-center">
+            <a
+              href="https://imminent-crepe-93a.notion.site/Rules-and-Regulations-39aa0ccf420f4136b9e407837f20eb0f"
+              target={"_blank"}
+              className="text-green-600 underline text-lg"
+            >
+              Rules and Regulations
+            </a>
+          </div>
           <div className="flex justify-center mt-5">
             <div className="w-full md:w-2/3 rounded shadow p-5 bg-gray-900">
               <div className="relative">
