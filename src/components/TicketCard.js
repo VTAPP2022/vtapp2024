@@ -96,13 +96,7 @@ export const TicketCard = ({ event, regType }) => {
           {event.doc_id}
         </p>
         <div className="justify-center mx-auto">
-          <QRCode
-            value={`VTAPP/${event.doc_id}/${eventType}`}
-            logoImage={logo}
-            eyeColor={["#003B00", "#003B00", "#003B00"]}
-            bgColor="#00FF41"
-            fgColor="#003B00"
-          />
+          <QRCode value={`VTAPP/${event.doc_id}/${eventType}`} />
         </div>
 
         <p className="justify-center mx-auto mt-3 mb-12 text-sm font-light text-black">
