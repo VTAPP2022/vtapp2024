@@ -68,7 +68,7 @@ export const Ticket = () => {
             Application number
           </label>
           <input
-            type="tel"
+            type="text"
             onChange={(e) => setApplicationNo(e.target.value)}
             className="
         form-control
