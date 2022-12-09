@@ -26,6 +26,11 @@ CSV_FILE_MAP = {
     "description": 6,
     "price": 4,
     "poster_url": 7,
+    "time": 8,
+    "date": 9,
+    "place": 10,
+    "floor": 11,
+    "room": 12,
 }
 
 FILTERS = {
@@ -48,6 +53,7 @@ if __name__ == "__main__":
                 if key in FILTERS.keys():
                     csv_val = FILTERS[key](csv_val)
                 event[key] = csv_val
+                event["admins"] = ["akhilesh.20bce7602@vitap.ac.in"]  # Temp
             events.append(event)
 
     with open(OUTPUT_FILE_PATH, "w+") as output_json:

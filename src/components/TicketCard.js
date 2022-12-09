@@ -4,8 +4,24 @@ import logo from "../assets/vtapp_logo.jpg";
 import vtappLogo from "../assets/vtappnewlogo.svg";
 import paidImg from "../assets/paid.png";
 import expiredImg from "../assets/expired.png";
+import { BUNDLES } from "../utils/bundles";
 
 export const TicketCard = ({ event, regType }) => {
+  const eventName = regType.isIndividual
+    ? event.event_name
+    : regType.isEventPass
+    ? "Event Pass (750/-)"
+    : BUNDLES[event.bundle_type].event_name;
+  const posterUrl = regType.isIndividual
+    ? event.poster_url
+    : regType.isBundle
+    ? BUNDLES[event.bundle_type].poster_url
+    : "https://i.imgur.com/2jzM0wr.jpg";
+  const eventType = regType.isIndividual
+    ? "INDIVIDUAL_TICKET"
+    : regType.isBundle
+    ? event.bundle_type
+    : "EVENT_PASS";
   return (
     <div className="flex flex-col w-3/4 xl:w-1/2 bg-gray-900 h-full relative">
       <img
@@ -17,30 +33,58 @@ export const TicketCard = ({ event, regType }) => {
         <img src={vtappLogo} alt="vtapp logo" className="w-1/2" />
       </div>
       <div>
-        <img src={event.poster_url} alt="Event poster" className="w-full" />
+        <img src={posterUrl} alt="Event poster" className="w-full" />
       </div>
       <div className="bg-white">
         <h1 className="p-4 text-2xl font-black text-black border-b border-gray-300">
-          {event.event_name}
+          {eventName}
         </h1>
+        <h1 className="p-4 text-xl font-bold text-black border-b border-gray-300">
+          {event.name} [{event.email}]
+        </h1>
+        {regType.isEventPass && (
+          <h1 className="p-4 text-lg font-light text-black border-b border-gray-300">
+            {Object.keys(event.tracker).length} EVENT(S) ATTENDED
+          </h1>
+        )}
+        {regType.isBundle && (
+          <h1 className="p-4 text-lg font-light text-black border-b border-gray-300">
+            {Object.entries(BUNDLES[event.bundle_type].limits).map((l) => {
+              return l[1] > 0 ? (
+                <p>
+                  {`${Object.keys(event.bundle_tracker[l[0]]).length} / ${
+                    l[1]
+                  } ${l[0].toUpperCase()} `}
+                </p>
+              ) : (
+                <p> "" </p>
+              );
+            })}
+          </h1>
+        )}
+
         {regType.isIndividual && (
           <>
             <div className="pb-4 flex flex-row border-b border-gray-300">
               <div>
                 <p className="text-xs font-light text-black px-4 pt-4">Date</p>
                 <p className="text-lg font-bold text-black px-4">
-                  Sun, 11 Dec, 2022
+                  {event.date}
                 </p>
               </div>
               <div className="justify-end ml-auto">
                 <p className="text-xs font-light text-black px-4 pt-4">Time</p>
-                <p className="text-lg font-bold text-black px-4">11:00 AM</p>
+                <p className="text-lg font-bold text-black px-4">
+                  {event.time}
+                </p>
               </div>
             </div>
             <div className="pb-4 border-b border-gray-300">
               <p className="text-xs font-light text-black px-4 pt-4">Venue</p>
               <p className="text-lg font-bold text-black px-4">
-                AB-2 Auditorium
+                {event.room ? `${event.room},` : ""}
+                {event.floor ? `${event.floor}, ` : ""}
+                {event.place}
               </p>
             </div>
           </>
@@ -52,7 +96,7 @@ export const TicketCard = ({ event, regType }) => {
         </p>
         <div className="justify-center mx-auto">
           <QRCode
-            value={`VTAPP/${event.doc_id}/${event.event_id}`}
+            value={`VTAPP/${event.doc_id}/${eventType}`}
             logoImage={logo}
             eyeColor={["#003B00", "#003B00", "#003B00"]}
             bgColor="#00FF41"

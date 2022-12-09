@@ -1,6 +1,5 @@
 import AppHeader from "./components/AppHeader";
 import { Footer } from "./components/Footer";
-import Comingsoon from "./pages/Comingsoon";
 import Team from "./pages/Team";
 import Event from "./pages/Event";
 import ScrollToTop from "./components/ScrollToTop";

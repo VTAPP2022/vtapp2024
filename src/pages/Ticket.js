@@ -4,7 +4,7 @@ import { TicketCard } from "../components/TicketCard";
 import ReactLoading from "react-loading";
 
 const CLOUD_FUNCTIONS_URL =
-  "https://asia-south1-vtapp-70e92.cloudfunctions.net";
+  "https://asia-south1-vtapp-70e92.cloudfunctions.net/api";
 
 export const Ticket = () => {
   const [dob, setDob] = useState(new Date());
@@ -42,6 +42,7 @@ export const Ticket = () => {
     }
 
     const details = await resp.json();
+    setApplicantDetails(details);
 
     setRegisteredEvents(details.registered_events);
     setRegType({
@@ -49,15 +50,8 @@ export const Ticket = () => {
       isIndividual: details.isIndividual || false,
       isEventPass: details.isEventPass || false,
     });
-
-    const applicant = {
-      email: details.applicant_email,
-      name: details.applicant_name,
-      application_no: details.application_no,
-    };
-
-    setApplicantDetails(applicant);
     setIsLoading(false);
+
     if (details.isIndividual) {
       showDropdown(true);
     }
@@ -123,14 +117,14 @@ export const Ticket = () => {
             <ReactLoading type="spin" color="#36D399" />
           </div>
         )}
-        {/* 
-        {regType.isBundle && (
+
+        {(regType.isEventPass || regType.isBundle) && (
           <div className="flex flex-col my-12">
             <div className="mx-auto justify-center flex">
-              <TicketCard event={} regType={regType} />
+              <TicketCard event={applicantDetails} regType={regType} />
             </div>
           </div>
-        )} */}
+        )}
 
         {dropdown && (
           <div className="mt-10 mx-auto">
