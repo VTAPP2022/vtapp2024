@@ -235,7 +235,7 @@ function Team() {
 
             <TeamCard
               name="Raj Mishra"
-              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              imageUrl="https://i.imgur.com/JOGyfhh.jpg"
               designation=""
             />
 
@@ -335,11 +335,11 @@ function Team() {
               imageUrl="https://i.imgur.com/xc8Bgw5.jpg"
               designation=""
             />
-              <TeamCard
-                name="Chaitanya Nagre"
-                imageUrl="https://i.imgur.com/wH3A1s9.jpg"
-                designation=""
-              />
+            <TeamCard
+              name="Chaitanya Nagre"
+              imageUrl="https://i.imgur.com/wH3A1s9.jpg"
+              designation=""
+            />
             <TeamCard
               name="Aditya Shrivastava"
               imageUrl="https://i.imgur.com/C2ZTed2.jpg"
