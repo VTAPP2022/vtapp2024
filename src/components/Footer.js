@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import vitwhite from "../assets/vit white logo .png";
 
 export const Footer = () => {
@@ -18,6 +19,9 @@ export const Footer = () => {
           <p className="text-base font-bold tracking-wide text-white">
             Contacts
           </p>
+          <br />
+            <Link to="/qrscan" className="text-lg font-bold underline">QR Scan</Link>
+            <br />
           <div className="flex">
             <p className="mr-1 text-gray-100">Phone:</p>
             <a
@@ -52,6 +56,7 @@ export const Footer = () => {
             >
               VIT-AP University, Amaravathi
             </a>
+
           </div>
         </div>
         <div>
@@ -101,10 +106,7 @@ export const Footer = () => {
             Sai Pranay
           </a>
           {" & "}
-          <a
-            href="https://twitter.com/akhilcodes"
-            className="link"
-          >
+          <a href="https://twitter.com/akhilcodes" className="link">
             Akhil Tulluri
           </a>
         </p>
