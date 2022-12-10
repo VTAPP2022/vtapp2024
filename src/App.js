@@ -1,6 +1,5 @@
 import AppHeader from "./components/AppHeader";
 import { Footer } from "./components/Footer";
-import Comingsoon from "./pages/Comingsoon";
 import Team from "./pages/Team";
 import Event from "./pages/Event";
 import ScrollToTop from "./components/ScrollToTop";
@@ -9,7 +8,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import { useEffect, useState } from "react";
 import { EventDetail } from "./pages/EventDetail";
+import { Ticket } from "./pages/Ticket";
 import Sponsors from "./pages/Sponsors";
+import { QRScan } from "./pages/QRScan";
 import Schedule from "./components/Schedule";
 
 function App() {
@@ -43,7 +44,9 @@ function App() {
           <Route path="/events" element={<Event events={events} />} />
           <Route path="/events/:id" element={<EventDetail events={events} />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/tickets" element={<Ticket events={events} />} />
           <Route path="/sponsors" element={<Sponsors />} />
+          <Route path="/qrscan" element={<QRScan events={events} />} />
           <Route path="/schedule" element={<Schedule />} />
         </Routes>
         <Footer />
