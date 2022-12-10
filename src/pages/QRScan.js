@@ -31,7 +31,9 @@ export const QRScan = ({ events }) => {
           }
 
           const adminEvents = events.filter((e) => {
-            return e.admins ? e.admins.includes(user.email) : false;
+            return e.admins
+              ? e.admins.includes(user.email.toLowerCase())
+              : false;
           });
           if (adminEvents.length > 0) {
             setAdminEvents(adminEvents);

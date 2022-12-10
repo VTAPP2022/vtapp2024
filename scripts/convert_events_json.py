@@ -36,7 +36,7 @@ CSV_FILE_MAP = {
 
 
 def get_admins(admins: str):
-    return [admin.strip() for admin in admins.split(",") if admin.strip()]
+    return [admin.strip().lower() for admin in admins.split(",") if admin.strip()]
 
 
 FILTERS = {
