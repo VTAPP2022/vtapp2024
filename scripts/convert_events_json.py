@@ -26,11 +26,23 @@ CSV_FILE_MAP = {
     "description": 6,
     "price": 4,
     "poster_url": 7,
+    "time": 8,
+    "date": 9,
+    "place": 10,
+    "floor": 11,
+    "room": 12,
+    "admins": 13,
 }
+
+
+def get_admins(admins: str):
+    return [admin.strip() for admin in admins.split(",") if admin.strip()]
+
 
 FILTERS = {
     "price": lambda p: p if p else 0,
     "poster_url": get_poster_link,
+    "admins": get_admins,
 }
 
 if __name__ == "__main__":
@@ -48,6 +60,8 @@ if __name__ == "__main__":
                 if key in FILTERS.keys():
                     csv_val = FILTERS[key](csv_val)
                 event[key] = csv_val
+            event["admins"].append("akhilesh.20bce7602@vitap.ac.in")
+            event["admins"].append("pranay.20bci7061@vitap.ac.in")
             events.append(event)
 
     with open(OUTPUT_FILE_PATH, "w+") as output_json:
