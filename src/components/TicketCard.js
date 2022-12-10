@@ -40,8 +40,7 @@ export const TicketCard = ({ event, regType }) => {
           {eventName}
         </h1>
         <h1 className="p-4 text-xl font-bold text-black border-b border-gray-300">
-          {event.name}
-          {regType.isEventPass || regType.isBundle ? `[${event.email}]` : ""}
+          {event.email}
         </h1>
         {regType.isEventPass && (
           <h1 className="p-4 text-lg font-light text-black border-b border-gray-300">
