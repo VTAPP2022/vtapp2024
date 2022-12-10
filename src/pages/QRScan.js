@@ -15,8 +15,6 @@ export const QRScan = ({ events }) => {
 
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-  console.log("render");
-
   useEffect(() => {
     if (events.length > 0) {
       setLoadedEvents(true);
@@ -38,7 +36,7 @@ export const QRScan = ({ events }) => {
           if (adminEvents.length > 0) {
             setAdminEvents(adminEvents);
           } else {
-            alert("You are not admin for any event.");
+            alert(`You are not admin for any event. ${user.email}`);
             return signOutGoogle();
           }
         }
