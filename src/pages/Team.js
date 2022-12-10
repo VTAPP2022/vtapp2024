@@ -229,7 +229,7 @@ function Team() {
           <div className="flex flex-wrap justify-center mt-6">
             <TeamCard
               name="Shashmit Kumar"
-              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              imageUrl="https://i.imgur.com/toIr1c3.png"
               designation=""
             />
 
@@ -241,7 +241,7 @@ function Team() {
 
             <TeamCard
               name="Jasjot Singh"
-              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              imageUrl="https://i.imgur.com/JSPW3mw.jpg"
               designation=""
             />
           </div>
@@ -304,7 +304,7 @@ function Team() {
 
             <TeamCard
               name="Harsh Gupta"
-              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              imageUrl="https://i.imgur.com/AGQx0ar.jpg"
               designation=""
             />
           </div>
@@ -331,18 +331,18 @@ function Team() {
           </h2>
           <div className="flex flex-wrap justify-center mt-6">
             <TeamCard
-              name="Amey Paresh"
-              imageUrl="https://i.imgur.com/oj8Rbsv.png"
+              name="Amey Negandhi"
+              imageUrl="https://i.imgur.com/xc8Bgw5.jpg"
               designation=""
             />
+              <TeamCard
+                name="Chaitanya Nagre"
+                imageUrl="https://i.imgur.com/wH3A1s9.jpg"
+                designation=""
+              />
             <TeamCard
               name="Aditya Shrivastava"
-              imageUrl="https://i.imgur.com/oj8Rbsv.png"
-              designation=""
-            />
-            <TeamCard
-              name="Chaitanya Nagre"
-              imageUrl="https://i.imgur.com/WvybGtn.jpg"
+              imageUrl="https://i.imgur.com/C2ZTed2.jpg"
               designation=""
             />
           </div>
