@@ -313,6 +313,26 @@ function Team() {
           <br />
           <br />
           <h2 className="text-3xl text-green-700 text-center font-bold">
+            Documentation and Content
+          </h2>
+          <div className="flex flex-wrap justify-center mt-6">
+            <TeamCard
+              name="Suhani Malik"
+              imageUrl="https://i.imgur.com/3QxjiCf.jpg"
+              designation=""
+            />
+
+            <TeamCard
+              name="Vinay Suryawanshi"
+              imageUrl="https://i.imgur.com/UQFmT4y.jpg"
+              designation=""
+            />
+          </div>
+
+          <br />
+          <br />
+          <br />
+          <h2 className="text-3xl text-green-700 text-center font-bold">
             Discipline
           </h2>
           <div className="flex flex-wrap justify-center mt-6">

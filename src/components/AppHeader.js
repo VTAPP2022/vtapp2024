@@ -135,16 +135,14 @@ function AppHeader() {
               </div>
 
               <div className="mt-12 lg:mt-0">
-                <a
+                <Link
                   className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                  href="https://vtop1.vitap.ac.in/vtapp/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  to="/tickets"
                 >
                   <span class="relative text-sm font-semibold text-gray-800">
-                    Register Now
+                    Grab Tickets
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

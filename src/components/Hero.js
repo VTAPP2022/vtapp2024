@@ -28,14 +28,7 @@ function Hero() {
           International Tech Fest
         </h2>
         <p className="text-2xl text-white font-bold">December 10 & 11</p>
-        <Link
-          className="relative flex h-9  items-center justify-center p-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max mt-5"
-          to="/tickets"
-        >
-          <span class="relative text-lg font-semibold text-gray-800">
-            Grab Tickets
-          </span>
-        </Link>
+        
       </div>
     </div>
   );
