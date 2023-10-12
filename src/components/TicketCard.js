@@ -1,7 +1,7 @@
 import React from "react";
 import { QRCode } from "react-qrcode-logo";
 import logo from "../assets/vtapp_logo.jpg";
-import vtappLogo from "../assets/vtappnewlogo.svg";
+import vtappLogo from "../assets/image 6.png";
 import paidImg from "../assets/paid.png";
 import expiredImg from "../assets/expired.png";
 import { BUNDLES } from "../utils/bundles";

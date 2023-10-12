@@ -2,7 +2,7 @@ import React from "react";
 import BigBangStarField from "react-big-bang-star-field";
 import logo from "../assets/image 6.png";
 import bg1 from "../assets/bg1.jpg";
-import logobw from "../assets/vtappnewlogo.svg";
+import logobw from "../assets/image 6.png";
 import video from "../assets/video.mp4";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function Hero() {
           loop
           muted
           src={video}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover grayscale"
         ></video>
       </div>
 

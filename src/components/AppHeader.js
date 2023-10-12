@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import logo from "../assets/vtappnewlogo.svg";
+import logo from "../assets/image 6.png";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
