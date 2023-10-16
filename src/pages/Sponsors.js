@@ -9,7 +9,7 @@ function Card({ imgurl, white }) {
         }`}
       >
         <div className="h-full w-full flex justify-center align-center">
-          <img className="p-2 m-auto w-9/12 max-w-xs h-auto" src={imgurl} />
+          {/* <img className="p-2 m-auto w-9/12 max-w-xs h-auto" src={imgurl} /> */}
         </div>
       </div>
     </div>
