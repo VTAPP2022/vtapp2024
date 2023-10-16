@@ -1,5 +1,4 @@
 import React from "react";
-import HeaderInfo from "./HeaderInfo";
 
 function About() {
   return (

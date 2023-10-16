@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 import React, { useEffect, useState } from "react";
 import EventCard from "../components/EventCard";
-import HeaderInfo from "../components/HeaderInfo";
 
 function Event({ events }) {
   const [filter, setFilter] = useState("");
@@ -80,7 +79,6 @@ function Event({ events }) {
   return (
     <div>
       <section className="bg-slate-900 flex flex-col">
-        <HeaderInfo />
         <div className="container px-6 py-10 mx-auto ">
           <h1 className="text-3xl font-semibold text-center capitalize lg:text-4xl text-white">
             Events
