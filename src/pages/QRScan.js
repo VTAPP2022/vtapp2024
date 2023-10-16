@@ -209,7 +209,7 @@ export const QRScan = ({ events }) => {
         <div className="flex justify-center">
           <button
             onClick={!currentUser ? signInWithGoogle : signOutGoogle}
-            className="rounded-lg p-2 px-3 bg-green-400 text-black text-lg"
+            className="rounded-lg p-2 px-3 bg-blue-400 text-black text-lg"
           >
             {!currentUser ? "Sign In with Google" : "Sign out"}
           </button>

@@ -10,9 +10,9 @@ function Team() {
         </h1>
 
         <div className="flex justify-center mx-auto mt-2">
-          <span className="inline-block w-40 h-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-3 h-1 mx-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-1 h-1 bg-green-500 rounded-full"></span>
+          <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
         </div>
 
         <div className="flex flex-wrap justify-center mt-6">
@@ -149,9 +149,9 @@ function Team() {
         </h1>
 
         <div className="flex justify-center mx-auto mt-2">
-          <span className="inline-block w-40 h-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-3 h-1 mx-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-1 h-1 bg-green-500 rounded-full"></span>
+          <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
         </div>
 
         <div className="container px-6 py-10 mx-auto ">
@@ -214,14 +214,14 @@ function Team() {
         </h1>
 
         <div className="flex justify-center mx-auto mt-2">
-          <span className="inline-block w-40 h-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-3 h-1 mx-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-1 h-1 bg-green-500 rounded-full"></span>
+          <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
         </div>
 
         <div className="container px-6 py-10 mx-auto ">
           <br />
-          <h2 className="text-3xl text-green-700 text-center font-bold">
+          <h2 className="text-3xl text-blue-700 text-center font-bold">
             Event Team
           </h2>
           <div className="flex flex-wrap justify-center mt-6">
@@ -246,7 +246,7 @@ function Team() {
           <br />
           <br />
           <br />
-          <h2 className="text-3xl text-green-700 text-center font-bold">
+          <h2 className="text-3xl text-blue-700 text-center font-bold">
             Web & Registrations
           </h2>
           <div className="flex flex-wrap justify-center mt-6">
@@ -266,7 +266,7 @@ function Team() {
           <br />
           <br />
           <br />
-          <h2 className="text-3xl text-green-700 text-center font-bold">
+          <h2 className="text-3xl text-blue-700 text-center font-bold">
             Design Team
           </h2>
           <div className="flex flex-wrap justify-center mt-6">
@@ -310,7 +310,7 @@ function Team() {
           <br />
           <br />
           <br />
-          <h2 className="text-3xl text-green-700 text-center font-bold">
+          <h2 className="text-3xl text-blue-700 text-center font-bold">
             Documentation and Content
           </h2>
           <div className="flex flex-wrap justify-center mt-6">
@@ -330,7 +330,7 @@ function Team() {
           <br />
           <br />
           <br />
-          <h2 className="text-3xl text-green-700 text-center font-bold">
+          <h2 className="text-3xl text-blue-700 text-center font-bold">
             Discipline
           </h2>
           <div className="flex flex-wrap justify-center mt-6">
@@ -344,7 +344,7 @@ function Team() {
           <br />
           <br />
           <br />
-          <h2 className="text-3xl text-green-700 text-center font-bold">
+          <h2 className="text-3xl text-blue-700 text-center font-bold">
             Finance Team
           </h2>
           <div className="flex flex-wrap justify-center mt-6">

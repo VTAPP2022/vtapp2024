@@ -105,7 +105,7 @@ export const Ticket = () => {
             disabled={
               dob.toDateString() === new Date().toDateString() || !applicationNo
             }
-            className="inline-block bg-green-300 disabled:bg-gray-50 px-3 py-1.5 text-sm font-semibold text-gray-700 rounded-md"
+            className="inline-block bg-blue-300 disabled:bg-gray-50 px-3 py-1.5 text-sm font-semibold text-gray-700 rounded-md"
             onClick={(e) => onSubmit(e)}
           >
             Submit

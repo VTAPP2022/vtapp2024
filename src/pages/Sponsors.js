@@ -20,8 +20,10 @@ function Sponsors() {
   return (
     <>
       <div id="Sponsors" className="bg-black text-center">
-        <br /><br /><br />
-        <span className="text-green-500 leading-tight mt-20 mb-40 text-3xl sm:text-5xl lg:text-6xl font-bold ">
+        <br />
+        <br />
+        <br />
+        <span className="text-blue-500 leading-tight mt-20 mb-40 text-3xl sm:text-5xl lg:text-6xl font-bold ">
           Our Sponsors
         </span>
         <br />

@@ -64,7 +64,7 @@ export const EventDetail = ({ events }) => {
         </div>
         <div className="pb-12 border-b dark:border-gray-700">
           <div className="flex justify-center pt-4 space-x-4 align-center">
-            <button className="rounded-md p-3 bg-green-400 text-black text-xl">
+            <button className="rounded-md p-3 bg-blue-400 text-black text-xl">
               Register now
             </button>
           </div>

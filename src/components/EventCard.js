@@ -50,13 +50,13 @@ function EventCard({
         <br />
         <div className="px-6 pb-4 mt-auto mb-3">
           {/* <Link
-            className="rounded-md p-3 bg-green-400 text-black mr-3"
+            className="rounded-md p-3 bg-blue-400 text-black mr-3"
             to={`/events/${eventId}`}
           >
             Read more
           </Link> */}
           <a
-            className="rounded-md p-3 bg-green-500 text-black"
+            className="rounded-md p-3 bg-blue-500 text-black"
             href="https://vtop1.vitap.ac.in/vtapp/"
             target="_blank"
             rel="noopener noreferrer"

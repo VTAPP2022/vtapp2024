@@ -9,9 +9,9 @@ function Schedule() {
         </h1>
 
         <div className="flex justify-center mx-auto mt-2">
-          <span className="inline-block w-40 h-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-3 h-1 mx-1 bg-green-500 rounded-full"></span>
-          <span className="inline-block w-1 h-1 bg-green-500 rounded-full"></span>
+          <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
+          <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
         </div>
         <br />
         <br />
