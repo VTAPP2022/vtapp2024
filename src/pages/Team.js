@@ -1,7 +1,5 @@
 import React from "react";
 import TeamCard from "../components/TeamCard";
-import video from "../assets/video.mp4";
-import NoimageCard from "../components/NoimageCard";
 
 function Team() {
   return (
