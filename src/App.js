@@ -12,6 +12,7 @@ import { Ticket } from "./pages/Ticket";
 import Sponsors from "./pages/Sponsors";
 import { QRScan } from "./pages/QRScan";
 import Schedule from "./components/Schedule";
+import EventsTemp from "./pages/EventsTemp";
 
 function App() {
   const [events, setEvents] = useState([]);
@@ -41,13 +42,17 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home events={events} />} />
-          <Route path="/events" element={<Event events={events} />} />
+          <Route path="/events" element={<EventsTemp pagename={"events"} />} />
           <Route path="/events/:id" element={<EventDetail events={events} />} />
           <Route path="/team" element={<Team />} />
           <Route path="/tickets" element={<Ticket events={events} />} />
           <Route path="/sponsors" element={<Sponsors />} />
           <Route path="/qrscan" element={<QRScan events={events} />} />
-          <Route path="/schedule" element={<Schedule />} />
+          {/* <Route path="/schedule" element={<Schedule />} /> */}
+          <Route
+            path="/schedule"
+            element={<EventsTemp pagename={"schedule"} />}
+          />
         </Routes>
         <Footer />
       </BrowserRouter>
