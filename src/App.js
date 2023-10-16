@@ -3,6 +3,7 @@ import { Footer } from "./components/Footer";
 import Team from "./pages/Team";
 import Event from "./pages/Event";
 import ScrollToTop from "./components/ScrollToTop";
+import StarfieldAnimation from "react-starfield-animation";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -39,6 +40,16 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <AppHeader />
+        <div className="canvas">
+          <StarfieldAnimation
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+            }}
+            numParticles={1200}
+          />
+        </div>
 
         <Routes>
           <Route path="/" element={<Home events={events} />} />
