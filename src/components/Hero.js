@@ -1,6 +1,7 @@
 import React from "react";
 import logobw from "../assets/image 6.png";
 import StarfieldAnimation from "react-starfield-animation";
+import Buttons from "./Buttons";
 
 function Hero() {
   return (
@@ -24,7 +25,8 @@ function Hero() {
           <h2 className="text-3xl text-white font-bold	">
             International Tech Fest
           </h2>
-          <p className="text-2xl text-white font-bold">December 10 & 11</p>
+          {/* <p className="text-2xl textx-white font-bold">December 9 & 10</p> */}
+          <Buttons/>
         </div>
       </div>
     </>
