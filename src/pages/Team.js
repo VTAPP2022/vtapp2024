@@ -83,8 +83,8 @@ function Team() {
           />
 
           <TeamCard
-            name="Dr. Anupama Namburu"
-            imageUrl="https://vitap.ac.in/wp-content/uploads/2019/06/Dr.-ANUPAMA-NAMBURU.jpg"
+            name="Dr.SK.KHADHEER PASHA"
+            imageUrl="https://vitap.ac.in/wp-content/uploads/2020/07/Dr.-SK.-KHADHEER-PASHA.jpg"
             designation="Deputy Director, Student Welfare"
           />
         </div>
