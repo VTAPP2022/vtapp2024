@@ -10,7 +10,7 @@ function Buttons() {
         rel="noopener noreferrer"
         // href="https://docs.google.com/forms/d/e/1FAIpQLSdbqfoCMXHihwm-qlNLT-E-KgX1B0dhHRPZCcFz_cyszr60pQ/viewform?usp=send_form"
       >
-        <button class="button button--mimas">
+        <button class="button button--mimas hover:cursor-not-allowed">
           <span>Register now</span>
         </button>
       </a>
@@ -18,7 +18,7 @@ function Buttons() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        // href="https://drive.google.com/file/d/1K9wyye_jfm5368TjDQFII3WyOUYC0puz/view"
+        href="https://drive.google.com/file/d/1cQrQi80YcAwKZEKZXhTUYP2baVE3FDRM/view?usp=drivesdk"
       >
         <button class="button button--mimas" href="">
           <span className="bflex">

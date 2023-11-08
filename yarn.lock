@@ -2039,6 +2039,23 @@
   resolved "https://registry.yarnpkg.com/@remix-run/router/-/router-1.0.3.tgz#953b88c20ea00d0eddaffdc1b115c08474aa295d"
   integrity sha512-ceuyTSs7PZ/tQqi19YZNBc5X7kj1f8p+4DIyrcIYFY9h+hd1OKm4RqtiWldR9eGEvIiJfsqwM4BsuCtRIuEw6Q==
 
+"@rive-app/canvas@2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-2.7.0.tgz#aee1411c73cd3a4cd4f7fa5cf9539a58c477dd4f"
+  integrity sha512-cB+St1q4wtzF09CUlsZXFUMiLIFEKLp4fbgJ87lF7tyZxoZFr3pViuQlEOaLOygwO1FGnbmhk0in5MS0xiLURQ==
+
+"@rive-app/react-canvas@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@rive-app/react-canvas/-/react-canvas-4.5.0.tgz#0a002b1f4e3eff214d9442d6c22b5bce0f722d2e"
+  integrity sha512-jK9od/tO1beCzDZSP6FIZBgjQA6vZ4A456J36q3Rzdv1Y1bPhbEP6rElmT1eAOCHZ6JKV1/9UNoC8IrSvrIYCQ==
+  dependencies:
+    "@rive-app/canvas" "2.7.0"
+
+"@rive-app/webgl@2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@rive-app/webgl/-/webgl-2.7.0.tgz#25e1924e101b8590bfcb4296fbc7af19bc89c043"
+  integrity sha512-EJ6nAhiWFcHvqFpTyg6PALSWvSpmv1c4cgfRGsPtxvKHBYCSkHiYgV++7QY+x7LT3w4iVaAmD/T6PUh1yzMtvg==
+
 "@rollup/plugin-babel@^5.2.0":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.1.tgz#04bc0608f4aa4b2e4b1aebf284344d0f68fda283"
@@ -9076,6 +9093,14 @@ rimraf@^3.0.0, rimraf@^3.0.2:
   integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
+
+rive-react@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/rive-react/-/rive-react-4.5.0.tgz#296b9baa89b115198b2c80fd49ac5245739b7e57"
+  integrity sha512-IA9x+xmT2Ro9YtEjByw9JiEyhMKkVitBxaaBMyseHPEywjHsXiVAWU3Tkw0KncWA8cjAwdAuknkmZBnmHyM/PA==
+  dependencies:
+    "@rive-app/canvas" "2.7.0"
+    "@rive-app/webgl" "2.7.0"
 
 rollup-plugin-terser@^7.0.0:
   version "7.0.2"

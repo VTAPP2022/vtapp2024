@@ -134,13 +134,13 @@ function AppHeader() {
                 </ul>
               </div>
 
-              <div className="mt-12 lg:mt-0">
+              <div className="mt-12 lg:mt-0 ">
                 <Link
-                  className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  className="cursor-not-allowed hover:cursor-not-allowed relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                   to="/tickets"
                 >
-                  <span class="relative text-sm font-semibold text-gray-800">
-                    Grab Tickets
+                  <span class="relative text-sm font-semibold text-gray-800 ">
+                    Register Now
                   </span>
                 </Link>
               </div>

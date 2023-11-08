@@ -2,8 +2,8 @@ import React from "react";
 
 function About() {
   return (
-    <div id="about">
-      <div className=" min-h-screen bg-black flex justify-center align-middle flex-col p-8">
+    <div id="about" className=" flex flex-wrap lg:flex-nowrap  min-h-screen items-center justify-evenly">
+      <div className=" bg-black flex justify-center align-middle flex-col p-8 max-w-[900px]">
         <div className="mt-10">
           <h1 className="text-5xl font-bold mb-2 text-white">About VTAPP</h1>
           <p className="py-2">
@@ -34,6 +34,13 @@ function About() {
             <p>Where: VIT-AP University, Amaravati, Andhra Pradesh</p>
           </b>
         </div>
+      </div>
+      <div className="flex justify-center items-center max-lg:mb-20">
+        <img
+          src="https://vitap.ac.in/wp-content/uploads/2021/07/Areal-View-Campus.jpeg"
+          alt="vitap campus"
+          className="rounded-3xl p-4 lg:max-w-[700px]"
+        />
       </div>
     </div>
   );
