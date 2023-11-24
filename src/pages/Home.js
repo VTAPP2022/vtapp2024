@@ -12,7 +12,7 @@ function Home({ events }) {
       <Hero />
       <About />
       <RiveAnimation />
-      <EventView events={events} />
+      {/* <EventView events={events} /> */}
       <TeamAndSponsors />
       <TShirt />
     </div>

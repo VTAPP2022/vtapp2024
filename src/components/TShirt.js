@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import tshirt from "../assets/tshirt.jpeg";
 
 const TShirt = () => {
   return (
@@ -16,48 +15,11 @@ const TShirt = () => {
         </div>
 
         <div className="flex justify-evenly mt-20 flex-col lg:flex-row flex-wrap gap-10">
-          <div className="max-w-md relative group">
+          <div className="max-w-md relative group  hover:cursor-pointer">
             <div className="overflow-hidden aspect-w-1 aspect-h-1">
               <img
-                className="object-cover w-full aspect-[16/9] transition-all duration-300 group-hover:scale-125"
-                src="https://i.imgur.com/4XovaFi.jpg"
-                alt="Collared T-Shirt 1"
-              />
-            </div>
-            <div className="absolute left-3 top-3">
-              <p className="sm:px-3 sm:py-1.5 px-1.5 py-1 text-[8px] sm:text-xs font-bold tracking-wide text-gray-900 uppercase bg-white rounded-full">
-                New
-              </p>
-            </div>
-            <div className="flex items-start justify-between mt-4 space-x-4">
-              <div>
-                <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  <div title="">
-                    Collared T-Shirt
-                    <br />
-                    Lacoste Fabric (High end Cotton fabric)
-                    <span
-                      className="absolute inset-0"
-                      aria-hidden="true"
-                    ></span>
-                  </div>
-                </h3>
-              </div>
-
-              {/* <div className="text-right">
-                <p className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  ₹ 225
-                </p>
-              </div> */}
-            </div>
-          </div>
-          <br />
-          <br />
-          <div className="max-w-md relative group">
-            <div className="overflow-hidden aspect-w-1 aspect-h-1">
-              <img
-                className="object-cover w-full aspect-[16/9] transition-all duration-300 group-hover:scale-125"
-                src="https://i.imgur.com/eZyj4x0.jpg"
+                className="object-cover w-full aspect-[16/9] transition-all duration-300 group-hover:scale-125 group-hover:cursor-pointer"
+                src="https://i.imgur.com/q5hiOgX.jpg"
                 alt=""
               />
             </div>
@@ -73,41 +35,6 @@ const TShirt = () => {
                     Collared T-Shirt
                     <br />
                     Lacoste Fabric (High end Cotton fabric)
-                    <span
-                      className="absolute inset-0"
-                      aria-hidden="true"
-                    ></span>
-                  </div>
-                </h3>
-              </div>
-
-              {/* <div className="text-right">
-                <p className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  ₹ 275
-                </p>
-              </div> */}
-            </div>
-          </div>
-          <div className="max-w-md relative group">
-            <div className="overflow-hidden aspect-w-1 aspect-h-1">
-              <img
-                className="object-cover w-full aspect-[16/9] transition-all duration-300 group-hover:scale-125"
-                src="https://i.imgur.com/hlDRCl4.jpg"
-                alt=""
-              />
-            </div>
-            <div className="absolute left-3 top-3">
-              <p className="sm:px-3 sm:py-1.5 px-1.5 py-1 text-[8px] sm:text-xs font-bold tracking-wide text-gray-900 uppercase bg-white rounded-full">
-                New
-              </p>
-            </div>
-            <div className="flex items-start justify-between mt-4 space-x-4">
-              <div>
-                <h3 className="text-xs font-bold text-gray-900 sm:text-sm md:text-base">
-                  <div title="">
-                    Hoodie
-                    <br />
-                    Fine Quality Clothing
                     <span
                       className="absolute inset-0"
                       aria-hidden="true"
