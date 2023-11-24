@@ -30,7 +30,7 @@ function About() {
           </p>
           <br />
           <b>
-            <p>When : 10-11 December 2023</p>
+            <p>When : 9-10 December 2023</p>
             <p>Where: VIT-AP University, Amaravati, Andhra Pradesh</p>
           </b>
         </div>
