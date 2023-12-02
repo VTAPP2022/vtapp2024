@@ -1,0 +1,27 @@
+import backgroundImg from "@vtapp/assets/hero-bg.png";
+import CTA from "@vtapp/components/CTA";
+import Image from "next/image";
+
+function Hero() {
+  return (
+    <div
+      className="heroContainer bg-transparent flex justify-center align-middle items-center py-7
+      h-screen relative -z-5 mt-[-80px]"
+    >
+      <div className="flex flex-col items-center justify-center h-screen">
+        <Image
+          src={backgroundImg}
+          alt="vtapp logo"
+          className="max-w-3xl mb-4 "
+        />
+        <h2 className="text-3xl text-white font-bold	">
+          VTAPP International Tech Fest
+        </h2>
+        <p className="text-2xl textx-white font-bold">December 9 & 10</p>
+        <CTA />
+      </div>
+    </div>
+  );
+}
+
+export default Hero;
