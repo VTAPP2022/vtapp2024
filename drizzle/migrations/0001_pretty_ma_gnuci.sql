@@ -1,0 +1,1 @@
+ALTER TABLE `qrcodes` ADD `qrcode_expired` boolean DEFAULT false NOT NULL;

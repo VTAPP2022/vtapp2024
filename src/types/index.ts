@@ -5,3 +5,4 @@ export type {
   AirtableEvent,
 } from "./Event";
 export type { TeamMemberDetails } from "./Team";
+export type { TicketEntry } from "./Ticket";
