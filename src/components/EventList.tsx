@@ -1,46 +1,27 @@
-/* eslint-disable array-callback-return */
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EventCard from "@vtapp/components/EventCard";
-import { Event } from "@vtapp/types";
+import { AirtableEvent, EventType } from "@vtapp/types";
 import Link from "next/link";
 
-function EventList({ events }: { events: Event[] }) {
-  const [filter, setFilter] = useState("");
+function EventList({ events }: { events: AirtableEvent[] }) {
+  const [filter, setFilter] = useState<EventType>();
   const [search, setSearch] = useState("");
   const [priceSort, setPriceSort] = useState("");
-  const [currentEvents, setCurrentEvents] = useState(events);
-  const [filteredEvents, setFilteredEvents] = useState<Event[]>([]);
+  const [filteredEvents, setFilteredEvents] = useState<AirtableEvent[]>([]);
 
-  const eventList =
-    filter || search || priceSort ? filteredEvents : currentEvents;
+  const eventList = filter || search || priceSort ? filteredEvents : events;
 
-  const sortEvents = (eventsL: Event[]) => {
-    const nonDefaultPoster: Event[] = [];
-    const defaultPoster: Event[] = [];
+  const applyFilter = (
+    filt: EventType | undefined,
+    sTerm: string,
+    sortVal: string
+  ) => {
+    let fList = [...events];
 
-    eventsL.forEach((e) => {
-      if (e.poster_url === "https://i.imgur.com/2jzM0wr.jpg") {
-        defaultPoster.push(e);
-      } else {
-        nonDefaultPoster.push(e);
-      }
-    });
-    return [...nonDefaultPoster, ...defaultPoster];
-  };
-
-  useEffect(() => {
-    setCurrentEvents(sortEvents(events));
-  }, [events]);
-
-  const applyFilter = (filt: string, sTerm: string, sortVal: string) => {
-    let fList = [...currentEvents];
-
-    if (filt !== "") {
-      fList = currentEvents.filter(
-        (e) => e.event_type.toLowerCase().trim() === filt.toLowerCase().trim()
-      );
+    if (filt) {
+      fList = events.filter((e) => e.event_type === filt);
     }
 
     if (sTerm !== "") {
@@ -56,10 +37,9 @@ function EventList({ events }: { events: Event[] }) {
 
     if (sortVal !== "") {
       if (sortVal === "p-low") {
-        console.log(fList);
-        fList.sort((e1, e2) => parseInt(e1.price) - parseInt(e2.price));
+        fList.sort((e1, e2) => e1.price - e2.price);
       } else if (sortVal === "p-high") {
-        fList.sort((e1, e2) => parseInt(e2.price) - parseInt(e1.price));
+        fList.sort((e1, e2) => e2.price - e1.price);
       }
     }
 
@@ -71,7 +51,7 @@ function EventList({ events }: { events: Event[] }) {
     setFilteredEvents(applyFilter(filter, term, priceSort));
   };
 
-  const onFilter = (f: string) => {
+  const onFilter = (f: EventType) => {
     setFilter(f);
     setFilteredEvents(applyFilter(f, search, priceSort));
   };
@@ -133,7 +113,7 @@ function EventList({ events }: { events: Event[] }) {
                 <button
                   className="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md z-10"
                   onClick={() => {
-                    setFilter("");
+                    setFilter(undefined);
                     setSearch("");
                     setPriceSort("");
                   }}
@@ -157,14 +137,14 @@ function EventList({ events }: { events: Event[] }) {
                   <select
                     className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700 z-10"
                     value={filter}
-                    onChange={(e) => onFilter(e.target.value)}
+                    onChange={(e) => onFilter(e.target.value as EventType)}
                   >
                     <option value="">All Event Types</option>
-                    <option value="codeathon">Codeathon</option>
-                    <option value="competition">Competition</option>
-                    <option value="exhibition">Exhibition</option>
-                    <option value="game">Game</option>
-                    <option value="workshop">Workshop</option>
+                    <option value="Codeathon">Codeathon</option>
+                    <option value="Competition">Competition</option>
+                    <option value="Exhibition">Exhibition</option>
+                    <option value="Game">Game</option>
+                    <option value="Workshop">Workshop</option>
                   </select>
                 </div>
               </div>
