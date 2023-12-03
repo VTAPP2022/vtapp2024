@@ -38,9 +38,6 @@ async function getData(event_id: number) {
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
     },
-    next: {
-      revalidate: 60,
-    }, // caches for 60 seconds for all clients - gotta love ISR
   });
 
   const data =

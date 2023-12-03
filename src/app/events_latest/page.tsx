@@ -31,16 +31,11 @@ async function getData() {
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
     },
-    next: {
-      revalidate: 60,
-    }, // caches for 60 seconds for all clients - gotta love ISR
   });
 
   const data = (await response.json()) as AirtableEventResponse;
 
   const events = data.records.map((record) => record.fields);
-
-  console.log("Fetched events from Airtable: ", { events });
 
   return events;
 }
