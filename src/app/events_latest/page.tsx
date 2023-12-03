@@ -40,6 +40,8 @@ async function getData() {
 
   const events = data.records.map((record) => record.fields);
 
+  console.log("Fetched events from Airtable: ", { events });
+
   return events;
 }
 
