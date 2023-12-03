@@ -38,6 +38,7 @@ async function getData(event_id: number) {
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
     },
+    cache: "no-store",
   });
 
   const data =

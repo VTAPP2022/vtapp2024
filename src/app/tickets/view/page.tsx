@@ -91,6 +91,7 @@ async function fetchTicketDetails(searchParams: URLSearchParams) {
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
     },
+    cache: "no-store",
   });
 
   const data = (await response.json()) as AirtableEventResponse;
