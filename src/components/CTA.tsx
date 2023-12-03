@@ -7,7 +7,7 @@ function Buttons() {
   return (
     <div className="buttons">
       <Link
-        className="button button--mimas hover:cursor-not-allowed"
+        className="button button--mimas"
         target="_blank"
         rel="noopener noreferrer"
         href="https://vtop1.vitap.ac.in/VTAPP/"

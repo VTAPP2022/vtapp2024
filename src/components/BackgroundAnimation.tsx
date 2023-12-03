@@ -10,7 +10,7 @@ function BackgroundAnimation() {
         width: "100%",
         height: "100%",
       }}
-      numParticles={1200}
+      numParticles={300}
     />
   );
 }

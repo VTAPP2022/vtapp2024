@@ -80,32 +80,50 @@ export default function AppHeader() {
                 <ul className="tracking-wide font-medium lg:text-sm flex-col flex lg:flex-row gap-6 lg:gap-0">
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
-                      <Link href="/">Home</Link>
+                      <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                        Home
+                      </Link>
                     </span>
                   </li>
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
-                      <Link href="/#about">About</Link>
+                      <Link href="/#about" onClick={() => setIsMenuOpen(false)}>
+                        About
+                      </Link>
                     </span>
                   </li>
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
-                      <Link href="/events">Events</Link>
+                      <Link href="/events" onClick={() => setIsMenuOpen(false)}>
+                        Events
+                      </Link>
                     </span>
                   </li>
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
-                      <Link href="/schedule">Schedule</Link>
+                      <Link
+                        href="/schedule"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Schedule
+                      </Link>
                     </span>
                   </li>
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
-                      <Link href="/team">Team</Link>
+                      <Link href="/team" onClick={() => setIsMenuOpen(false)}>
+                        Team
+                      </Link>
                     </span>
                   </li>
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
-                      <Link href="sponsors">Sponsors</Link>
+                      <Link
+                        href="sponsors"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        Sponsors
+                      </Link>
                     </span>
                   </li>
                 </ul>
@@ -113,8 +131,10 @@ export default function AppHeader() {
 
               <div className="mt-12 lg:mt-0 ">
                 <Link
-                  className="cursor-not-allowed hover:cursor-not-allowed relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
                   href="https://vtop1.vitap.ac.in/VTAPP/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className="relative text-sm font-semibold text-gray-800 ">
                     Register Now

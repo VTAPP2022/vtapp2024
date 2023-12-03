@@ -6,15 +6,15 @@ function Hero() {
   return (
     <div
       className="heroContainer bg-transparent flex justify-center align-middle items-center py-7
-      h-screen relative -z-5 mt-[-80px]"
+      h-screen mt-[-80px]"
     >
       <div className="flex flex-col items-center justify-center h-screen">
         <Image
           src={backgroundImg}
           alt="vtapp logo"
-          className="max-w-3xl mb-4 "
+          className="max-w-3xl mb-4 max-sm:max-w-sm"
         />
-        <h2 className="text-3xl text-white font-bold	">
+        <h2 className="text-3xl text-white font-bold max-sm:text-2xl">
           VTAPP International Tech Fest
         </h2>
         <p className="text-2xl textx-white font-bold">December 9 & 10</p>
