@@ -8,5 +8,7 @@ declare namespace NodeJS {
     DATABASE_PASSWORD: string;
     DATABASE_NAME: string;
     EVENTS_ADMIN_API_KEY: string;
+    CLOUDFLARE_TURNSTILE_SECRET: string;
+    NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITEKEY: string;
   }
 }

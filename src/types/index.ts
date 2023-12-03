@@ -5,4 +5,9 @@ export type {
   AirtableEvent,
 } from "./Event";
 export type { TeamMemberDetails } from "./Team";
-export type { TicketEntry } from "./Ticket";
+export type {
+  TicketEntry,
+  TicketSearchParams,
+  QRCodeRowDrizzle,
+  EventsRegistered,
+} from "./Ticket";
