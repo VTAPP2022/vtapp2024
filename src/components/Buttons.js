@@ -10,7 +10,7 @@ function Buttons() {
         rel="noopener noreferrer"
         href="https://vtop1.vitap.ac.in/VTAPP/"
       >
-        <button class="button button--mimas hover:cursor-not-allowed">
+        <button class="button button--mimas">
           <span>Register now</span>
         </button>
       </a>
