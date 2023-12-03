@@ -8,7 +8,7 @@ function Buttons() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        // href="https://docs.google.com/forms/d/e/1FAIpQLSdbqfoCMXHihwm-qlNLT-E-KgX1B0dhHRPZCcFz_cyszr60pQ/viewform?usp=send_form"
+        href="https://vtop1.vitap.ac.in/VTAPP/"
       >
         <button class="button button--mimas hover:cursor-not-allowed">
           <span>Register now</span>
