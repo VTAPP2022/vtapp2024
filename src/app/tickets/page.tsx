@@ -1,25 +1,9 @@
 import TurnstileCaptcha from "@vtapp/components/Turnstile";
-import { redirect } from "next/navigation";
+import { fetchTicket } from "@vtapp/lib/tickets";
 
 export const runtime = "edge";
 
 export default function Tickets() {
-  async function fetchTicket(formData: FormData) {
-    "use server";
-
-    const applicationNumber = formData.get("applicationNumber");
-    const dateOfBirth = formData.get("dateOfBirth");
-    const captchaToken = formData.get("cf-turnstile-response");
-
-    if (!applicationNumber || !dateOfBirth || !captchaToken) {
-      return;
-    }
-
-    redirect(
-      `/tickets/view?applicationNumber=${applicationNumber}&dateOfBirth=${dateOfBirth}&captchaToken=${captchaToken}`
-    );
-  }
-
   return (
     <>
       <form

@@ -61,7 +61,7 @@ function EventCard({
         <div className="px-6 pb-4 mt-auto mb-3">
           <Link
             className="rounded-md p-3 bg-blue-400 text-black mr-3"
-            href={`/events/${event.event_id}`}
+            href={`/events/${event.slug}`}
           >
             Read more
           </Link>

@@ -1,4 +1,5 @@
-import { AirtableEventLong, AirtableEventResponse } from "@vtapp/types/Event";
+import { findEventBySlug } from "@vtapp/lib/events";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -6,64 +7,61 @@ import remarkGfm from "remark-gfm";
 
 export const runtime = "edge";
 
-async function getData(event_id: number) {
-  const requiredFields = [
-    "event_id",
-    "event_name",
-    "event_type",
-    "price",
-    "organiser",
-    "description",
-    "long_description", // NEW - fetch the long description
-    "poster_url",
-    "datetime_start",
-    "datetime_end",
-    "place",
-    "floor",
-    "room",
-  ];
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const { slug } = params;
 
-  // make a string of required fields (fields[]=event_id&fields[]=event_name&...)
-  const requiredFieldsString = requiredFields
-    .map((field) => `fields[]=${field}`)
-    .join("&");
+  const event = await findEventBySlug(slug);
 
-  const filterByFormula = `event_id=${event_id}`; // NEW - fetch only the event with the given event_id
+  if (!event) {
+    return {
+      title: "VTAPP 2023 - Event Page",
+      description: "There is no event with this slug.",
+    };
+  }
 
-  const AIRTABLE_EVENTS_ENDPOINT = encodeURI(
-    `${process.env.AIRTABLE_BASE_URL}/${process.env.AIRTABLE_BASE_ID}/events?view=Grid view&${requiredFieldsString}&filterByFormula=${filterByFormula}`
-  );
-
-  const cacheOptions =
-    process.env.NODE_ENV === "development"
-      ? {
-          next: { revalidate: 60 },
-        }
-      : { cache: "no-store" as RequestCache };
-
-  const response = await fetch(AIRTABLE_EVENTS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
+  return {
+    title: `VTAPP 2023 - ${event.event_name}`,
+    description: event.description,
+    openGraph: {
+      type: "website",
+      title: `VTAPP 2023 - ${event.event_name}`,
+      description: event.description,
+      url: `https://vtapp.vitap.ac.in/events/${event.slug}`,
+      siteName: "VTAPP 2023",
+      images: [
+        {
+          url:
+            event.poster_url && event.poster_url.length > 0
+              ? event.poster_url[0].url
+              : "https://i.imgur.com/2jzM0wr.jpg",
+        },
+      ],
     },
-    ...cacheOptions,
-  });
-
-  const data =
-    (await response.json()) as AirtableEventResponse<AirtableEventLong>;
-
-  const events = data.records.map((record) => record.fields);
-
-  return events;
+    twitter: {
+      site: "https://vtapp.vitap.ac.in",
+      title: `VTAPP 2023 - ${event.event_name}`,
+      description: event.description,
+      card: "summary_large_image",
+      images:
+        event.poster_url && event.poster_url.length > 0
+          ? event.poster_url[0].url
+          : "https://i.imgur.com/2jzM0wr.jpg",
+    },
+  };
 }
 
 export default async function EventPage({
   params,
 }: {
-  params: { event_id: number };
+  params: { slug: string };
 }) {
-  const { event_id } = params;
+  const { slug } = params;
 
-  const [event] = await getData(event_id);
+  const event = await findEventBySlug(slug);
 
   return (
     <section className="bg-slate-900">

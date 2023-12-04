@@ -11,6 +11,7 @@ async function getData() {
     "price",
     "organiser",
     "description",
+    "slug",
     "poster_url",
     "datetime_start",
     "datetime_end",

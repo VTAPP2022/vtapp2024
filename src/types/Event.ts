@@ -1,20 +1,4 @@
-export interface Event {
-  event_id: string;
-  organiser: string;
-  event_name: string;
-  event_type: string;
-  description: string;
-  price: string;
-  poster_url: string;
-  time: string;
-  date: string;
-  place: string;
-  floor: string;
-  room: string;
-  admins: string[];
-}
-
-export enum EventType {
+enum EventType {
   CODEATHON = "Codeathon",
   COMPETITION = "Competition",
   EXHIBITION = "Exhibition",
@@ -41,6 +25,8 @@ export interface AirtableEvent {
   price: number;
   organiser: string;
   description: string;
+  slug: string;
+  long_description: string;
   poster_url?: AirtableImage[];
   datetime_start?: string;
   datetime_end?: string;
@@ -50,17 +36,14 @@ export interface AirtableEvent {
 
   // there are more fields but we don't need them
 }
-
-export interface AirtableEventLong extends AirtableEvent {
-  long_description: string;
-}
-
-interface AirtableEventRow<T = AirtableEvent> {
+interface AirtableEventRow {
   id: string;
   createdTime: string;
-  fields: T;
+  fields: AirtableEvent;
 }
 
-export interface AirtableEventResponse<T = AirtableEvent> {
-  records: AirtableEventRow<T>[];
+interface AirtableEventResponse {
+  records: AirtableEventRow[];
 }
+
+export type { EventType, AirtableEventResponse };
