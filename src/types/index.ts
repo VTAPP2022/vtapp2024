@@ -1,4 +1,9 @@
-export type { EventType, AirtableEventResponse, AirtableEvent } from "./Event";
+export type {
+  EventType,
+  AirtableEventResponse,
+  AirtableEvent,
+  Event,
+} from "./Event";
 export type { TeamMemberDetails } from "./Team";
 export type {
   TicketEntry,
