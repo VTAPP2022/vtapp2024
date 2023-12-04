@@ -1,0 +1,1 @@
+CREATE INDEX `appno_dob_index` ON `qrcodes` (`application_no`,`date_of_birth`);

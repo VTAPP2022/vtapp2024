@@ -1,0 +1,45 @@
+{
+  "name": "vtapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "next lint",
+    "migration:generate": "drizzle-kit generate:mysql",
+    "migration:run": "pnpx tsx migrate.ts",
+    "build": "pnpm run migration:generate && pnpm run migration:run && next build"
+  },
+  "dependencies": {
+    "@marsidev/react-turnstile": "^0.4.0",
+    "@paralleldrive/cuid2": "^2.2.2",
+    "@planetscale/database": "^1.11.0",
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.29.1",
+    "mysql2": "^3.6.5",
+    "next": "14.0.3",
+    "prop-types": "^15.8.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-markdown": "^9.0.1",
+    "react-qrcode-logo": "^2.9.0",
+    "react-starfield-animation": "^1.0.1",
+    "remark-gfm": "^4.0.0",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.8.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "daisyui": "^4.4.17",
+    "drizzle-kit": "^0.20.6",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
