@@ -24,14 +24,21 @@ async function getData() {
     .map((field) => `fields[]=${field}`)
     .join("&");
   const AIRTABLE_EVENTS_ENDPOINT = encodeURI(
-    `${process.env.AIRTABLE_BASE_URL}/${process.env.AIRTABLE_BASE_ID}/Events?view=Grid view&${requiredFieldsString}`
+    `${process.env.AIRTABLE_BASE_URL}/${process.env.AIRTABLE_BASE_ID}/events?view=Grid view&${requiredFieldsString}`
   );
+
+  const cacheOptions =
+    process.env.NODE_ENV === "development"
+      ? {
+          next: { revalidate: 60 },
+        }
+      : { cache: "no-store" as RequestCache };
 
   const response = await fetch(AIRTABLE_EVENTS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
     },
-    cache: "no-store",
+    ...cacheOptions,
   });
 
   const data = (await response.json()) as AirtableEventResponse;

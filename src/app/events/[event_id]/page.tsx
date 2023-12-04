@@ -31,14 +31,21 @@ async function getData(event_id: number) {
   const filterByFormula = `event_id=${event_id}`; // NEW - fetch only the event with the given event_id
 
   const AIRTABLE_EVENTS_ENDPOINT = encodeURI(
-    `${process.env.AIRTABLE_BASE_URL}/${process.env.AIRTABLE_BASE_ID}/Events?view=Grid view&${requiredFieldsString}&filterByFormula=${filterByFormula}`
+    `${process.env.AIRTABLE_BASE_URL}/${process.env.AIRTABLE_BASE_ID}/events?view=Grid view&${requiredFieldsString}&filterByFormula=${filterByFormula}`
   );
+
+  const cacheOptions =
+    process.env.NODE_ENV === "development"
+      ? {
+          next: { revalidate: 60 },
+        }
+      : { cache: "no-store" as RequestCache };
 
   const response = await fetch(AIRTABLE_EVENTS_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${process.env.AIRTABLE_PERSONAL_ACCESS_TOKEN}`,
     },
-    cache: "no-store",
+    ...cacheOptions,
   });
 
   const data =
