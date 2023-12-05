@@ -14,9 +14,9 @@ function About() {
             back with a bang! Join us in celebrating innovation, knowledge,
             technology, and diversity through a multitude of events which will
             give students a platform to showcase their learning and demonstrate
-            their technical skills. This year’s theme is “The Matrix”. Much like
+            their technical skills. This year’s theme is “Star Wars". Much like
             how the body, the mind and the brain sync together to reflect power,
-            individuality, and humanity in the matrix, at VTAPP, infrastructural
+            individuality, and humanity in the universe, at VTAPP, infrastructural
             facilities, students and ideas will come together to create magic.
           </p>
           <p>
