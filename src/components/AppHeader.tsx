@@ -119,7 +119,7 @@ export default function AppHeader() {
                   <li>
                     <span className="block md:px-4 transition hover:text-primary">
                       <Link
-                        href="sponsors"
+                        href="/sponsors"
                         onClick={() => setIsMenuOpen(false)}
                       >
                         Sponsors
