@@ -10,11 +10,11 @@ function About() {
         <div className="mt-10">
           <h1 className="text-5xl font-bold mb-2 text-white">About VTAPP</h1>
           <p className="py-2">
-            Welcome to VTAPP 2023! VIT AP University’s annual technical fest is
+            Welcome to VTAPP 2023! VIT AP University&apos;s annual technical fest is
             back with a bang! Join us in celebrating innovation, knowledge,
             technology, and diversity through a multitude of events which will
             give students a platform to showcase their learning and demonstrate
-            their technical skills. This year’s theme is “Star Wars". Much like
+            their technical skills. This year theme is &quot;Star Wars&quot;. Much like
             how the body, the mind and the brain sync together to reflect power,
             individuality, and humanity in the universe, at VTAPP, infrastructural
             facilities, students and ideas will come together to create magic.
