@@ -1,4 +1,5 @@
 import { AirtableEvent, EventType } from "@vtapp/types";
+import { getPosterUrl } from "@vtapp/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,11 +17,7 @@ function EventCard({
       <div className="max-w-[22rem] rounded overflow-hidden shadow-lg bg-gray-800 m-4 flex flex-col flex-1">
         <Image
           className="w-full aspect-[16/9] object-cover"
-          src={
-            event.poster_url && event.poster_url.length > 0
-              ? event.poster_url[0].url
-              : "https://i.imgur.com/2jzM0wr.jpg"
-          }
+          src={getPosterUrl(event)}
           alt={event.event_name}
           loading="lazy"
           width={640}
@@ -30,7 +27,9 @@ function EventCard({
           <div className="text-white font-bold text-xl mb-2">
             {event.event_name}
           </div>
-          <p className="text-gray-300 text-base line-clamp-5">{event.description}</p>
+          <p className="text-gray-300 text-base line-clamp-5">
+            {event.description}
+          </p>
         </div>
         <div className="px-6 py-4">
           <button

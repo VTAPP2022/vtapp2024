@@ -4,6 +4,7 @@ import expiredImg from "@vtapp/assets/expired.png";
 import paidImg from "@vtapp/assets/paid.png";
 import vtappLogo from "@vtapp/assets/vtapp-logo.png";
 import { QRCode } from "react-qrcode-logo";
+import { getPosterUrl } from "@vtapp/utils";
 
 export default function TicketCard({ event }: { event: EventsRegistered }) {
   return (
@@ -27,8 +28,8 @@ export default function TicketCard({ event }: { event: EventsRegistered }) {
       <div>
         <Image
           src={
-            event.event?.poster_url && event.event.poster_url.length > 0
-              ? event.event.poster_url[0].url
+            event.event
+              ? getPosterUrl(event.event)
               : "https://i.imgur.com/2jzM0wr.jpg"
           }
           alt="Event poster"

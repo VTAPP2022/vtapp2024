@@ -3,12 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Event } from "@vtapp/types";
+import { AirtableEvent } from "@vtapp/types";
+import { getPosterUrl } from "@vtapp/utils";
 
-function EventCarousel({ events }: { events: Event[] }) {
+function EventCarousel({ events }: { events: AirtableEvent[] }) {
   const randomEvents = events
     .filter(
-      (e) => e.poster_url !== "https://i.imgur.com/2jzM0wr.jpg" && e.description
+      (e) =>
+        getPosterUrl(e) !== "https://i.imgur.com/2jzM0wr.jpg" && e.description
     )
     .slice(0, 5);
 
@@ -58,8 +60,8 @@ function EventCarousel({ events }: { events: Event[] }) {
           >
             <Image
               className="absolute inset-0 w-full h-full object-cover object-center"
-              src={randomEvents[index].poster_url}
-              alt=""
+              src={getPosterUrl(randomEvents[index])}
+              alt={randomEvents[index].event_name}
               width={500}
               height={500}
             />
@@ -73,13 +75,13 @@ function EventCarousel({ events }: { events: Event[] }) {
           <div className="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
             <div className="p-12 md:pr-24 md:pl-16 md:py-12">
               <p className="text-gray-600">{randomEvents[index].description}</p>
-              {/* <a
+              <Link
                 className="flex items-baseline mt-3 text-blue-800 hover:text-blue-900 focus:text-blue-900"
-                href={event.RegLink}
-              > */}
-              {/* <span>Register to the event</span> */}
-              {/* <span className="text-xs ml-1">&#x279c;</span> */}
-              {/* </a> */}
+                href={`/events/${randomEvents[index].slug}`}
+              >
+                <span>Read more</span>
+                <span className="text-xs ml-1">&#x279c;</span>
+              </Link>
             </div>
             <svg
               className="hidden md:block absolute inset-y-0 h-full w-24 fill-current text-gray-100 -ml-12"

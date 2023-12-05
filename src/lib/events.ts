@@ -27,6 +27,9 @@ export async function fetchEventsFromAirtable() {
 
     const events = data.records.map((record) => record.fields);
 
+    // random sort to avoid the same event being at the top of the list every time
+    events.sort(() => Math.random() - 0.5);
+
     return events;
   } catch (error) {
     console.error(error);

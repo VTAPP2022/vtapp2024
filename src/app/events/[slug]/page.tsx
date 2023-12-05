@@ -1,4 +1,5 @@
 import { findEventBySlug } from "@vtapp/lib/events";
+import { getPosterUrl } from "@vtapp/utils";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -34,11 +35,7 @@ export default async function EventPage({
 
         <Image
           className="w-full aspect-[16/9] rounded-md"
-          src={
-            event.poster_url && event.poster_url.length > 0
-              ? event.poster_url[0].url
-              : "https://i.imgur.com/2jzM0wr.jpg"
-          }
+          src={getPosterUrl(event)}
           alt={event.event_name}
           width={640}
           height={360}
