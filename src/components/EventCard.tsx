@@ -13,9 +13,9 @@ function EventCard({
 }) {
   return (
     <div className="flex flex-col z-10">
-      <div className="max-w-xs rounded overflow-hidden shadow-lg bg-gray-800 m-4 flex flex-col flex-1">
+      <div className="max-w-[22rem] rounded overflow-hidden shadow-lg bg-gray-800 m-4 flex flex-col flex-1">
         <Image
-          className="w-full aspect-[16/9]"
+          className="w-full aspect-[16/9] object-cover"
           src={
             event.poster_url && event.poster_url.length > 0
               ? event.poster_url[0].url
@@ -30,17 +30,17 @@ function EventCard({
           <div className="text-white font-bold text-xl mb-2">
             {event.event_name}
           </div>
-          <p className="text-gray-300 text-base">{event.description}</p>
+          <p className="text-gray-300 text-base line-clamp-5">{event.description}</p>
         </div>
         <div className="px-6 py-4">
           <button
-            className="inline-block bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 rounded-md"
+            className="whitespace-nowrap rounded-full bg-gray-100 px-2.5 py-0.5 text-sm text-gray-700 mr-2 mb-2"
             onClick={() => search(event.organiser)}
           >
             {event.organiser}
           </button>
           <button
-            className="inline-block bg-gray-100 px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 rounded-md"
+            className="whitespace-nowrap rounded-full bg-gray-100 px-2.5 py-0.5 text-sm text-gray-700 mr-2 mb-2"
             onClick={() => filter(event.event_type)}
           >
             {event.event_type}
@@ -60,13 +60,13 @@ function EventCard({
         <br />
         <div className="px-6 pb-4 mt-auto mb-3">
           <Link
-            className="rounded-md p-3 bg-blue-400 text-black mr-3"
+            className="rounded-md px-5 py-3 bg-blue-400 text-black mr-3"
             href={`/events/${event.slug}`}
           >
             Read more
           </Link>
           <Link
-            className="rounded-md p-3 bg-blue-500 text-black"
+            className="rounded-md px-5 py-3 bg-blue-500 text-black"
             href="https://vtop1.vitap.ac.in/VTAPP/"
             target="_blank"
             rel="noopener noreferrer"
