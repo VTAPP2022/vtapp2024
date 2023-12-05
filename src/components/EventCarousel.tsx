@@ -65,16 +65,17 @@ function EventCarousel({ events }: { events: AirtableEvent[] }) {
               width={500}
               height={500}
             />
-            <div className="absolute inset-0 w-full h-full bg-blue-900 opacity-75"></div>
+            <div className="absolute inset-0 w-full h-full bg-blue-900 opacity-50"></div>
             <div className="absolute inset-0 w-full h-full flex items-center justify-center fill-current text-white">
-              <h1 className="text-6xl font-BebasNeue animate-fade">
-                {randomEvents[index].event_name}
-              </h1>
+              
             </div>
           </div>
           <div className="w-full md:w-3/5 h-full flex items-center bg-gray-100 rounded-lg">
             <div className="p-12 md:pr-24 md:pl-16 md:py-12">
-              <p className="text-gray-600">{randomEvents[index].description}</p>
+              <h1 className="text-3xl mb-5 animate-fade text-black">
+                {randomEvents[index].event_name}
+              </h1>
+              <p className="text-gray-600 line-clamp-3">{randomEvents[index].description}</p>
               <Link
                 className="flex items-baseline mt-3 text-blue-800 hover:text-blue-900 focus:text-blue-900"
                 href={`/events/${randomEvents[index].slug}`}
