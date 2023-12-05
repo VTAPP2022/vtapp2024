@@ -75,7 +75,7 @@ function EventList({ events }: { events: AirtableEvent[] }) {
             <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
           </div>
           <br />
-          <div className="text-center">
+          {/* <div className="text-center">
             <Link
               href="https://imminent-crepe-93a.notion.site/Rules-and-Regulations-39aa0ccf420f4136b9e407837f20eb0f"
               target="_blank"
@@ -83,7 +83,7 @@ function EventList({ events }: { events: AirtableEvent[] }) {
             >
               Rules and Regulations
             </Link>
-          </div>
+          </div> */}
           <div className="flex justify-center mt-5">
             <div className="w-full md:w-2/3 rounded shadow p-5 bg-gray-900">
               <div className="relative">
