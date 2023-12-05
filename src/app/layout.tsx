@@ -3,6 +3,7 @@ import "./globals.css";
 import AppHeader from "@vtapp/components/AppHeader";
 import Footer from "@vtapp/components/Footer";
 import dynamic from "next/dynamic";
+import NextTopLoader from "nextjs-toploader";
 
 const DynamicAnimationBackground = dynamic(
   () => import("../components/BackgroundAnimation"),
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black min-h-screen scroll-smooth">
+        <NextTopLoader />
         <DynamicAnimationBackground />
         <AppHeader />
         {children}
