@@ -50,6 +50,9 @@ export default function RootLayout({
         <NextTopLoader />
         <DynamicAnimationBackground />
         <AppHeader />
+        <div className="w-full p-2 text-center bg-blue-950">
+          VTAPP 2023 is postponed due to michaung cyclone dates will be announced shortly
+        </div>
         {children}
         <Footer />
       </body>
