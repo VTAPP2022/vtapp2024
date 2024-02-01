@@ -1,6 +1,8 @@
 import { fetchAdminDetails } from "@vtapp/lib/auth";
 import EventList from "@vtapp/components/EventList";
 
+export const runtime = "edge";
+
 export default async function AdminEvents() {
   const adminDetails = await fetchAdminDetails();
 
