@@ -1,11 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EventCard from "@vtapp/components/EventCard";
-import { AirtableEvent, EventType } from "@vtapp/types";
-import Link from "next/link";
+import { AdminInfoWithEvents, AirtableEvent, EventType } from "@vtapp/types";
+import { verifyAdminClientSide } from "@vtapp/lib/scanner";
+import { signOut } from "next-auth/react";
 
-function EventList({ events }: { events: AirtableEvent[] }) {
+function EventList({
+  events,
+  admin,
+}: {
+  events: AirtableEvent[];
+  admin?: AdminInfoWithEvents;
+}) {
+  useEffect(() => {
+    if (admin) {
+      verifyAdminClientSide(admin);
+    }
+  }, [admin]);
+
   const [filter, setFilter] = useState<EventType>();
   const [search, setSearch] = useState("");
   const [priceSort, setPriceSort] = useState("");
@@ -65,6 +78,16 @@ function EventList({ events }: { events: AirtableEvent[] }) {
     <div>
       <section className="bg-slate-900 flex flex-col">
         <div className="container px-6 py-10 mx-auto ">
+          {admin && admin.user && (
+            <div className="text-center">
+              <button
+                className="text-blue-600 underline text-lg relative z-10"
+                onClick={() => signOut({ callbackUrl: "/" })}
+              >
+                Not {admin.user?.email}? Logout
+              </button>
+            </div>
+          )}
           <h1 className="text-3xl font-semibold text-center capitalize lg:text-4xl text-white">
             Events
           </h1>
@@ -159,6 +182,7 @@ function EventList({ events }: { events: AirtableEvent[] }) {
                   event={e}
                   filter={onFilter}
                   search={onSearch}
+                  updateLink={admin ? e.update_link : undefined}
                 />
               );
             })}

@@ -7,8 +7,10 @@ function EventCard({
   event,
   filter,
   search,
+  updateLink,
 }: {
   event: AirtableEvent;
+  updateLink?: string;
   filter: (filter: EventType) => void;
   search: (search: string) => void;
 }) {
@@ -58,20 +60,33 @@ function EventCard({
         {/* // Uncomment below when event descriptions and registration exist */}
         <br />
         <div className="px-6 pb-4 mt-auto mb-3">
-          <Link
-            className="rounded-md px-5 py-3 bg-blue-400 text-black mr-3"
-            href={`/events/${event.slug}`}
-          >
-            Read more
-          </Link>
-          <Link
-            className="rounded-md px-5 py-3 bg-blue-500 text-black"
-            href="https://vtop1.vitap.ac.in/VTAPP/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Register now
-          </Link>
+          {!updateLink ? (
+            <>
+              <Link
+                className="rounded-md px-5 py-3 bg-blue-400 text-black mr-3"
+                href={`/events/${event.slug}`}
+              >
+                Read more
+              </Link>
+              <Link
+                className="rounded-md px-5 py-3 bg-blue-500 text-black"
+                href="https://vtop1.vitap.ac.in/VTAPP/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Register now
+              </Link>
+            </>
+          ) : (
+            <Link
+              className="rounded-md px-5 py-3 bg-blue-500 text-black"
+              href={updateLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Update Event Details
+            </Link>
+          )}
         </div>
       </div>
     </div>
