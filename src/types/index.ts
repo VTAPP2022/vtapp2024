@@ -5,4 +5,8 @@ export type {
   TicketSearchParams,
   QRCodeRowDrizzle,
   EventsRegistered,
+  QRCodeRowManualDrizzle,
 } from "./Ticket";
+export type { AdminInfo, AdminInfoWithEvents } from "./AdminEvents";
+export type { CheckInInput, CheckInResponse } from "./CheckIn";
+export { CheckInStatusCode } from "./CheckIn";

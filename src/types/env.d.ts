@@ -10,5 +10,8 @@ declare namespace NodeJS {
     EVENTS_ADMIN_API_KEY: string;
     CLOUDFLARE_TURNSTILE_SECRET: string;
     NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITEKEY: string;
+    GOOGLE_CLIENT_ID: string;
+    GOOGLE_CLIENT_SECRET: string;
+    NEXTAUTH_SECRET: string;
   }
 }

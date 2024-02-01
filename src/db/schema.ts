@@ -26,6 +26,8 @@ export const qrcodes = mysqlTable(
     dateOfBirth: varchar("date_of_birth", { length: 10 }).notNull(),
     eventId: tinyint("event_id").notNull(),
     qrcodeExpired: boolean("qrcode_expired").notNull().default(false),
+    scannedBy: varchar("scanned_by", { length: 255 }),
+    scannedAt: datetime("scanned_at"),
     createdAt: datetime("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
@@ -39,6 +41,7 @@ export const qrcodes = mysqlTable(
         table.applicationNo,
         table.dateOfBirth
       ),
+      idAndeventIdIndex: index("id_event_index").on(table.id, table.eventId),
       appNoEventIndex: uniqueIndex("appno_event_index").on(
         table.applicationNo,
         table.eventId

@@ -19,30 +19,17 @@ These instructions will help you set up the project on your local machine for de
 
 ### Install requirements
 
-```
+```bash
 ❯ pnpm install
 ```
 
 ### Setup env variables
 
-- Create a `.env.local` file in root of the project.
-
-```
-AIRTABLE_BASE_URL=https://api.airtable.com
-AIRTABLE_BASE_ID=xxxxx // base_id from airtable
-AIRTABLE_PERSONAL_ACCESS_TOKEN=xxxx // airtable PAT
-DATABASE_HOST=xxxx // mysql database host
-DATABASE_USERNAME=xxxx // mysql database username
-DATABASE_PASSWORD=xxxx // mysql password
-DATABASE_NAME=xxxx // mysql db name
-EVENTS_ADMIN_API_KEY=xxxx // a secret key for webhook
-CLOUDFLARE_TURNSTILE_SECRET=1x0000000000000000000000000000000AA // this is for testing
-NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITEKEY=1x00000000000000000000AA // testing - always succeeds
-```
+- Create a `.env.local` file in root of the project. Check out [.env.example](./.env.example) to know what values are required.
 
 ### Run in dev mode
 
-```
+```bash
 ❯ pnpm dev
 
 > vtapp@0.1.0 dev /Projects/vtapp
@@ -57,7 +44,7 @@ NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITEKEY=1x00000000000000000000AA // testing - a
 
 ### (Optional) Generate SQL migrations
 
-```
+```bash
 ❯ pnpm migration:generate
 
 > vtapp@0.1.0 migration:generate /Projects/vtapp
@@ -79,19 +66,19 @@ No schema changes, nothing to migrate 😴
 
 ### (Optional) Apply SQL migrations
 
-```
+```bash
 ❯ pnpm migration:run
 ```
 
 ### Build for production
 
-```
+```bash
 ❯ pnpm build
 ```
 
 ### Build to deploy on cf-pages
 
-```
+```bash
 ❯ pnpx @cloudflare/next-on-pages@1
 ```
 

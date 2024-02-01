@@ -22,6 +22,20 @@
       "when": 1701606751682,
       "tag": "0002_premium_prodigy",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1701798079783,
+      "tag": "0003_shallow_raider",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1701807662725,
+      "tag": "0004_bored_revanche",
+      "breakpoints": true
     }
   ]
 }
