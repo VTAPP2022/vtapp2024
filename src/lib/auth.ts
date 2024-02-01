@@ -58,7 +58,7 @@ export async function fetchAdminDetails(
     };
   }
 
-  const eventsFromAirtable = await fetchEventsFromAirtable();
+  const eventsFromAirtable = await fetchEventsFromAirtable(true);
   const events = eventsFromAirtable.filter((event) => {
     return (
       event.admin_1_email_address === emailAddress ||

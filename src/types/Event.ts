@@ -35,7 +35,7 @@ export interface AirtableEvent {
   place?: string;
   floor?: string;
   room?: string;
-
+  update_link?: string;
   // there are more fields but we don't need them
 }
 interface AirtableEventRow {

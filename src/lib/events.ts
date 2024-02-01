@@ -3,7 +3,7 @@
 import { AirtableEventResponse } from "@vtapp/types";
 import { notFound } from "next/navigation";
 
-export async function fetchEventsFromAirtable() {
+export async function fetchEventsFromAirtable(include_admin_info = false) {
   try {
     const AIRTABLE_EVENTS_ENDPOINT = encodeURI(
       `${process.env.AIRTABLE_BASE_URL}/${process.env.AIRTABLE_BASE_ID}/events?view=Grid view`
@@ -26,6 +26,12 @@ export async function fetchEventsFromAirtable() {
     const data = (await response.json()) as AirtableEventResponse;
 
     const events = data.records.map((record) => record.fields);
+
+    if (!include_admin_info) {
+      events.forEach((event) => {
+        delete event.update_link;
+      });
+    }
 
     // random sort to avoid the same event being at the top of the list every time
     events.sort(() => Math.random() - 0.5);
