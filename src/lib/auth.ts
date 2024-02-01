@@ -63,6 +63,7 @@ export async function fetchAdminDetails(
     return (
       event.admin_1_email_address === emailAddress ||
       event.admin_2_email_address === emailAddress ||
+      event.submitted_by === emailAddress ||
       SUPER_ADMIN_EMAILS.includes(emailAddress)
     );
   });

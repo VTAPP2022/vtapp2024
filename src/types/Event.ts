@@ -29,6 +29,7 @@ export interface AirtableEvent {
   long_description: string;
   admin_1_email_address: string;
   admin_2_email_address: string;
+  submitted_by: string;
   poster_url?: AirtableImage[];
   datetime_start?: string;
   datetime_end?: string;
