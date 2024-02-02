@@ -18,7 +18,7 @@ function Hero() {
           VTAPP International Tech Fest
         </h2>
         <p className="text-2xl textx-white font-bold">February 22 & 23 2024</p>
-        {/* <p className="text-2xl textx-white font-bold text-center">VTAPP 2023 is postponed due to michaung cyclone <br /> dates will be announced shortly</p> */}
+        {/* <p className="text-2xl textx-white font-bold text-center">VTAPP 2024 is postponed due to michaung cyclone <br /> dates will be announced shortly</p> */}
         <CTA />
       </div>
     </div>

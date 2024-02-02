@@ -19,20 +19,20 @@ export async function generateMetadata({
 
   if (!event) {
     return {
-      title: "VTAPP 2023 - Event Page",
+      title: "VTAPP 2024 - Event Page",
       description: "There is no event with this slug.",
     };
   }
 
   return {
-    title: `VTAPP 2023 - ${event.event_name}`,
+    title: `VTAPP 2024 - ${event.event_name}`,
     description: event.description,
     openGraph: {
       type: "website",
-      title: `VTAPP 2023 - ${event.event_name}`,
+      title: `VTAPP 2024 - ${event.event_name}`,
       description: event.description,
       url: `https://vtapp.vitap.ac.in/events/${event.slug}`,
-      siteName: "VTAPP 2023",
+      siteName: "VTAPP 2024",
       images: [
         {
           url:
@@ -44,7 +44,7 @@ export async function generateMetadata({
     },
     twitter: {
       site: "https://vtapp.vitap.ac.in",
-      title: `VTAPP 2023 - ${event.event_name}`,
+      title: `VTAPP 2024 - ${event.event_name}`,
       description: event.description,
       card: "summary_large_image",
       images:
