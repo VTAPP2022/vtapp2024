@@ -26,8 +26,8 @@ export default function TicketView({
   }, [registeredEvents, router]);
 
   return (
-    <div className="flex flex-col h-fit py-20 bg-gray-900 w-3/4 xl:w-full mx-auto">
-      <div className="mt-10 mx-auto flex flex-col items-center">
+    <div className="flex flex-col h-fit py-20 bg-gray-900 xl:w-full mx-auto">
+      <div className="mt-10 mx-auto flex flex-col items-center w-3/4">
         <label
           htmlFor="event"
           className="form-label inline-block mb-2 text-white text-lg text-center w-full"
