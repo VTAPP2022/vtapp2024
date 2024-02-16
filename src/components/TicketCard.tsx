@@ -40,25 +40,27 @@ export default function TicketCard({ event }: { event: EventsRegistered }) {
       </div>
       <div className="bg-white">
         <h1 className="p-4 text-2xl font-black text-black border-b border-gray-300">
-          {event.event?.event_name}
+          {event.event.event_name}
         </h1>
-        <h1 className="p-4 text-xl font-bold text-black border-b border-gray-300">
+        <h1 className="p-4 text-xl font-light text-black border-b border-gray-300">
           {event.applicantEmail}
         </h1>
-        <div className="pb-4 flex flex-row border-b border-gray-300">
-          <div>
-            <p className="text-xs font-light text-black px-4 pt-4">Date</p>
-            <p className="text-lg font-bold text-black px-4">
-              {event.event?.datetime_start}
-            </p>
+        {event.event.datetime_start && (
+          <div className="pb-4 flex flex-row border-b border-gray-300">
+            <div>
+              <p className="text-xs font-light text-black px-4 pt-4">Date</p>
+              <p className="text-lg text-black px-4">
+                {new Date(event.event.datetime_start).toLocaleDateString()}
+              </p>
+            </div>
+            <div className="justify-end ml-auto">
+              <p className="text-xs font-light text-black px-4 pt-4">Time</p>
+              <p className="text-lg text-black px-4">
+                {new Date(event.event.datetime_start).toLocaleTimeString()}
+              </p>
+            </div>
           </div>
-          <div className="justify-end ml-auto">
-            <p className="text-xs font-light text-black px-4 pt-4">Time</p>
-            <p className="text-lg font-bold text-black px-4">
-              {event.event?.datetime_end}
-            </p>
-          </div>
-        </div>
+        )}
         <div className="pb-4 border-b border-gray-300">
           <p className="text-xs font-light text-black px-4 pt-4">Venue</p>
           <p className="text-lg font-bold text-black px-4">

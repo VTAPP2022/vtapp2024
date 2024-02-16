@@ -52,23 +52,7 @@ export default function Tickets() {
           </label>
           <input
             type="date"
-            className="
-              form-control
-              block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              text-gray-700
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:outline-none z-10 relative
-            "
+            className="z-10 p-1 border rounded-sm border-solid border-gray-300 transition ease-in-out text-gray-700 focus:outline-none text-center w-full"
             id="dateOfBirth"
             name="dateOfBirth"
             required

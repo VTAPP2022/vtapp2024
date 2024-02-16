@@ -48,5 +48,5 @@ export interface QRCodeRowManualDrizzle {
 }
 
 export interface EventsRegistered extends QRCodeRowDrizzle {
-  event?: AirtableEvent;
+  event: AirtableEvent;
 }

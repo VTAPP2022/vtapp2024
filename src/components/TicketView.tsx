@@ -19,8 +19,6 @@ export default function TicketView({
           className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700 z-10 relative"
           onChange={(e) => {
             setSelectedEvent(registeredEvents[parseInt(e.target.value)]);
-
-            console.log(registeredEvents[parseInt(e.target.value)]);
           }}
         >
           <option value="">Choose an event</option>

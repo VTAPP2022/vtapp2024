@@ -92,7 +92,7 @@ const Footer = () => {
             Check out our social media handles for more information & latest
             updates
           </p>
-          <Link href="/qrscan" className="text-lg font-bold underline">
+          <Link href="/admin/scan" className="text-lg font-bold underline">
             QR Scan
           </Link>
         </div>

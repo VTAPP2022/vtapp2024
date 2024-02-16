@@ -121,6 +121,7 @@ export const POST: (req: NextRequest) => Promise<Response> = auth(
           .set({
             scannedAt: new Date(),
             scannedBy: user.email,
+            qrcodeExpired: true,
           })
           .where(eq(qrcodes.id, ticketId));
 

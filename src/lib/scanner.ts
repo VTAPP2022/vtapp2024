@@ -19,28 +19,49 @@ async function checkInTicketClientSide(eventName: string, ticketId: string) {
 
   switch (checkInResponse.code) {
     case CheckInStatusCode.UNAUTHORIZED:
-      Notiflix.Notify.failure(
-        "You are not authorized to scan this QR Code. Please log in."
+      Notiflix.Report.failure(
+        "Unauthorized",
+        "You are not authorized to scan this QR Code. Please log in.",
+        "OK"
       );
       break;
     case CheckInStatusCode.FORBIDDEN:
-      Notiflix.Notify.failure(
-        `You are not an admin for the event ${eventName}.`
+      Notiflix.Report.failure(
+        "Forbidden",
+        `You are not an admin for the event ${eventName}.`,
+        "OK"
       );
       break;
     case CheckInStatusCode.INVALID_TICKET:
-      Notiflix.Notify.failure("Ticket not found / is invalid.");
+      Notiflix.Report.failure(
+        "Invalid Ticket",
+        "Ticket not found / is invalid.",
+        "OK"
+      );
       break;
     case CheckInStatusCode.ALREADY_CHECKED_IN:
-      Notiflix.Notify.failure("This ticket has already been checked in.");
+      Notiflix.Report.failure(
+        "Already Checked-in",
+        "This ticket has already been checked in.",
+        "OK"
+      );
       break;
     case CheckInStatusCode.SUCCESS:
-      Notiflix.Notify.success("Check-in successful.");
+      Notiflix.Report.success("Success", "Check-in successful.", "OK");
       break;
     case CheckInStatusCode.SERVER_ERROR:
-      Notiflix.Notify.failure("Server error. Please try again later.");
+      Notiflix.Report.failure(
+        "Server Error",
+        "Server error. Please try again later / contact admin.",
+        "OK"
+      );
       break;
     default:
+      Notiflix.Report.failure(
+        "Unknown Error",
+        "An unknown error occured. Please try again later / contact admin.",
+        "OK"
+      );
       break;
   }
 }
@@ -59,8 +80,8 @@ export async function verifyQRCodeClientSide(
   const ticketId = qrCodeTextParts[1];
 
   Notiflix.Confirm.show(
-    "Do you want to check-in this ticket?",
-    `You are about to verify a ticket for event ${eventName}. Please note that this action cannot be undone. Ticket ID: ${ticketId}`,
+    "Confirm Check-in",
+    `Event: ${eventName} - Ticket ID: ${ticketId} - Continue Check-in?`,
     "Yes",
     "No",
     async () => {

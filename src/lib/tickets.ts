@@ -82,5 +82,9 @@ export async function fetchTicketDetails(applicantInfo: TicketSearchParams) {
     eventRegistered.event = event;
   });
 
-  return eventsRegistered as EventsRegistered[];
+  return eventsRegistered
+    .filter((e) => e.event)
+    .sort((a, b) =>
+      a.event.event_name.localeCompare(b.event.event_name)
+    ) as EventsRegistered[];
 }
