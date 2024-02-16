@@ -27,10 +27,16 @@ export default function TicketView({
 
   return (
     <div className="flex flex-col h-fit py-20 bg-gray-900 xl:w-full mx-auto">
-      <div className="mt-10 mx-auto">
+      <div className="mt-10 mx-auto flex flex-col items-center">
+        <label
+          htmlFor="event"
+          className="form-label inline-block mb-2 text-white text-lg text-center w-full"
+        >
+          Choose an event
+        </label>
         <select
           placeholder="Choose an event"
-          className="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700 z-10 relative"
+          className="px-4 py-3 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm text-gray-700 z-10 relative w-full"
           onChange={(e) => {
             setSelectedEvent(registeredEvents[parseInt(e.target.value)]);
           }}
