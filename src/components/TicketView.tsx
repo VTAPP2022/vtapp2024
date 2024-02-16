@@ -1,8 +1,10 @@
 "use client";
 
 import { EventsRegistered } from "@vtapp/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TicketCard from "./TicketCard";
+import { useRouter } from "next/navigation";
+import Notiflix from "notiflix";
 
 export default function TicketView({
   registeredEvents,
@@ -10,6 +12,18 @@ export default function TicketView({
   registeredEvents: EventsRegistered[];
 }) {
   const [selectedEvent, setSelectedEvent] = useState<EventsRegistered>();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (registeredEvents.length === 0) {
+      Notiflix.Report.failure(
+        "No tickets found",
+        "You have no tickets.",
+        "OK",
+        () => router.push("/tickets")
+      );
+    }
+  }, [registeredEvents, router]);
 
   return (
     <div className="flex flex-col h-fit py-20 bg-gray-900 xl:w-full mx-auto">
