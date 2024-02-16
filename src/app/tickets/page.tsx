@@ -43,7 +43,7 @@ export default function Tickets() {
           />
         </div>
 
-        <div className="mt-5 mx-auto">
+        <div className="mt-5 mx-auto flex flex-col items-center">
           <label
             htmlFor="dateOfBirth"
             className="form-label inline-block mb-2 text-white text-lg text-center w-full"
@@ -55,6 +55,7 @@ export default function Tickets() {
             className="z-10 p-1 border rounded-sm border-solid border-gray-300 transition ease-in-out text-gray-700 focus:outline-none text-center w-full"
             id="dateOfBirth"
             name="dateOfBirth"
+            defaultValue={new Date().toISOString().split("T")[0]}
             required
           />
         </div>
