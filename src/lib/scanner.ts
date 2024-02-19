@@ -47,10 +47,11 @@ async function checkInTicketClientSide(eventName: string, ticketId: string) {
           checkInResponse.details.scannedAt
         ).toLocaleDateString("en-IN", {
           timeZone: "Asia/Kolkata",
-        })} at ${new Date(checkInResponse.details.scannedAt).toLocaleTimeString(
-          "en-IN",
-          { timeZone: "Asia/Kolkata" }
-        )} by ${checkInResponse.details.scannedBy}`;
+        })} at ${new Date(
+          checkInResponse.details.scannedAt + "Z"
+        ).toLocaleTimeString("en-IN", { timeZone: "Asia/Kolkata" })} by ${
+          checkInResponse.details.scannedBy
+        }`;
       }
 
       Notiflix.Report.failure("Already Checked-in", message, "OK");
