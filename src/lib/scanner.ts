@@ -45,9 +45,12 @@ async function checkInTicketClientSide(eventName: string, ticketId: string) {
       if (checkInResponse.details) {
         message = `Scanned on ${new Date(
           checkInResponse.details.scannedAt
-        ).toLocaleDateString()} at ${new Date(
-          checkInResponse.details.scannedAt
-        ).toLocaleTimeString()} by ${checkInResponse.details.scannedBy}`;
+        ).toLocaleDateString("en-US", {
+          timeZone: "Asia/Mumbai",
+        })} at ${new Date(checkInResponse.details.scannedAt).toLocaleTimeString(
+          "en-US",
+          { timeZone: "Asia/Mumbai" }
+        )} by ${checkInResponse.details.scannedBy}`;
       }
 
       Notiflix.Report.failure("Already Checked-in", message, "OK");
