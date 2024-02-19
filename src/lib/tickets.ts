@@ -11,42 +11,54 @@ import { fetchEventsFromAirtable } from "./events";
 export async function fetchTicket(formData: FormData) {
   const applicationNumber = formData.get("applicationNumber");
   const dateOfBirth = formData.get("dateOfBirth");
-  const captchaToken = formData.get("cf-turnstile-response");
+  // const captchaToken = formData.get("cf-turnstile-response");
 
-  if (!applicationNumber || !dateOfBirth || !captchaToken) {
+  if (
+    !applicationNumber ||
+    !dateOfBirth
+    // || !captchaToken
+  ) {
     return;
   }
 
   redirect(
-    `/tickets/view?applicationNumber=${applicationNumber}&dateOfBirth=${dateOfBirth}&captchaToken=${captchaToken}`
+    `/tickets/view?applicationNumber=${applicationNumber}&dateOfBirth=${dateOfBirth}`
   );
 }
 
 export async function fetchTicketDetails(applicantInfo: TicketSearchParams) {
-  const { applicationNumber, dateOfBirth, captchaToken } = applicantInfo;
+  const {
+    applicationNumber,
+    dateOfBirth,
+    //, captchaToken
+  } = applicantInfo;
 
-  if (!applicationNumber || !dateOfBirth || !captchaToken) {
+  if (
+    !applicationNumber ||
+    !dateOfBirth
+    // || !captchaToken
+  ) {
     notFound();
   }
 
   // verify captchaToken
-  const VERIFY_ENDPOINT =
-    "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+  // const VERIFY_ENDPOINT =
+  //   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-  const captchaResponse = await fetch(VERIFY_ENDPOINT, {
-    method: "POST",
-    body: `secret=${encodeURIComponent(
-      process.env.CLOUDFLARE_TURNSTILE_SECRET
-    )}&response=${encodeURIComponent(captchaToken)}`,
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-    },
-  });
+  // const captchaResponse = await fetch(VERIFY_ENDPOINT, {
+  //   method: "POST",
+  //   body: `secret=${encodeURIComponent(
+  //     process.env.CLOUDFLARE_TURNSTILE_SECRET
+  //   )}&response=${encodeURIComponent(captchaToken)}`,
+  //   headers: {
+  //     "content-type": "application/x-www-form-urlencoded",
+  //   },
+  // });
 
-  const captchaResponseJson = await captchaResponse.json();
-  if (!captchaResponseJson.success) {
-    notFound();
-  }
+  // const captchaResponseJson = await captchaResponse.json();
+  // if (!captchaResponseJson.success) {
+  //   notFound();
+  // }
 
   // change dateOfBirth to DD-MM-YYYY format
   const dateOfBirthArray = dateOfBirth.split("-");

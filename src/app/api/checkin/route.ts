@@ -107,6 +107,10 @@ export const POST: (req: NextRequest) => Promise<Response> = auth(
             JSON.stringify({
               success: false,
               code: CheckInStatusCode.ALREADY_CHECKED_IN,
+              details: {
+                scannedAt: ticket.scanned_at,
+                scannedBy: ticket.scanned_by,
+              },
             }),
             {
               headers: { "Content-Type": "application/json" },

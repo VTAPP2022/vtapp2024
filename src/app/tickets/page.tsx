@@ -60,9 +60,7 @@ export default function Tickets() {
           />
         </div>
 
-        <div className="mt-5 mx-auto">
-          <TurnstileCaptcha />
-        </div>
+        <div className="mt-5 mx-auto">{/* <TurnstileCaptcha /> */}</div>
 
         <div className="mt-5 mx-auto">
           <input

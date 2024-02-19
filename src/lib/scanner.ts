@@ -40,11 +40,17 @@ async function checkInTicketClientSide(eventName: string, ticketId: string) {
       );
       break;
     case CheckInStatusCode.ALREADY_CHECKED_IN:
-      Notiflix.Report.failure(
-        "Already Checked-in",
-        "This ticket has already been checked in.",
-        "OK"
-      );
+      let message = "This ticket has already been checked in.";
+
+      if (checkInResponse.details) {
+        message = `Scanned on ${new Date(
+          checkInResponse.details.scannedAt
+        ).toLocaleDateString()} at ${new Date(
+          checkInResponse.details.scannedAt
+        ).toLocaleTimeString()} by ${checkInResponse.details.scannedBy}`;
+      }
+
+      Notiflix.Report.failure("Already Checked-in", message, "OK");
       break;
     case CheckInStatusCode.SUCCESS:
       Notiflix.Report.success("Success", "Check-in successful.", "OK");

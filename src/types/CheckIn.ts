@@ -10,6 +10,12 @@ export enum CheckInStatusCode {
 export interface CheckInResponse {
   success: boolean;
   code: CheckInStatusCode;
+  details?: AlreadyScannedDetails;
+}
+
+export interface AlreadyScannedDetails {
+  scannedAt: string;
+  scannedBy: string;
 }
 
 export interface CheckInInput {
