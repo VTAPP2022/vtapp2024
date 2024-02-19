@@ -45,11 +45,11 @@ async function checkInTicketClientSide(eventName: string, ticketId: string) {
       if (checkInResponse.details) {
         message = `Scanned on ${new Date(
           checkInResponse.details.scannedAt
-        ).toLocaleDateString("en-US", {
-          timeZone: "Asia/Mumbai",
+        ).toLocaleDateString("en-IN", {
+          timeZone: "Asia/Kolkata",
         })} at ${new Date(checkInResponse.details.scannedAt).toLocaleTimeString(
-          "en-US",
-          { timeZone: "Asia/Mumbai" }
+          "en-IN",
+          { timeZone: "Asia/Kolkata" }
         )} by ${checkInResponse.details.scannedBy}`;
       }
 
