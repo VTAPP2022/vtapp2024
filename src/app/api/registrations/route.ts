@@ -1,6 +1,6 @@
 import { db, qrcodes } from "@vtapp/db";
 import { fetchAdminDetails } from "@vtapp/lib/auth";
-import { eq } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { NextRequest } from "next/server";
 import { createObjectCsvStringifier } from "csv-writer-browser";
 
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const eventId = parseInt(eventIdString);
+    const eventIds = eventIdString.split(",").map((id) => parseInt(id));
 
     const { events, user, isVitEmail } = await fetchAdminDetails();
 
@@ -88,7 +88,8 @@ export async function GET(request: NextRequest) {
 
     const event = events.find(
       (event) =>
-        event.sdc_id && event.sdc_id.split(",").map(parseInt).includes(eventId)
+        event.sdc_id &&
+        event.sdc_id.split(",").map((id) => parseInt(id)) === eventIds // This might be problematic later
     );
 
     if (!event) {
@@ -108,7 +109,7 @@ export async function GET(request: NextRequest) {
     const participants = await db
       .select()
       .from(qrcodes)
-      .where(eq(qrcodes.eventId, eventId));
+      .where(inArray(qrcodes.eventId, eventIds));
 
     const csvHeaders = particpantDetailsCsvStringifier.getHeaderString();
     const csvRows =
