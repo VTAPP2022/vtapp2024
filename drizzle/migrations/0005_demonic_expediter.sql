@@ -1,0 +1,1 @@
+ALTER TABLE `qrcodes` MODIFY COLUMN `event_id` int NOT NULL;

@@ -1,5 +1,4 @@
 import {
-  tinyint,
   mysqlTable,
   bigint,
   uniqueIndex,
@@ -7,6 +6,7 @@ import {
   varchar,
   boolean,
   index,
+  int,
 } from "drizzle-orm/mysql-core";
 import { sql } from "drizzle-orm";
 import { createId } from "@paralleldrive/cuid2";
@@ -24,7 +24,7 @@ export const qrcodes = mysqlTable(
     }).notNull(),
     applicationNo: varchar("application_no", { length: 30 }).notNull(),
     dateOfBirth: varchar("date_of_birth", { length: 10 }).notNull(),
-    eventId: tinyint("event_id").notNull(),
+    eventId: int("event_id").notNull(),
     qrcodeExpired: boolean("qrcode_expired").notNull().default(false),
     scannedBy: varchar("scanned_by", { length: 255 }),
     scannedAt: datetime("scanned_at"),
