@@ -17,6 +17,7 @@
     "@paralleldrive/cuid2": "^2.2.2",
     "@planetscale/database": "^1.11.0",
     "@types/react-qr-reader": "^2.1.7",
+    "csv-writer-browser": "^1.0.0",
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.29.1",
     "mysql2": "^3.6.5",

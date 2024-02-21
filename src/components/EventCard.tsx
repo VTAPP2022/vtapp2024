@@ -78,14 +78,22 @@ function EventCard({
               </Link>
             </>
           ) : (
-            <Link
-              className="rounded-md px-5 py-3 bg-blue-500 text-black"
-              href={updateLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Update Event Details
-            </Link>
+            <div className="flex flex-row gap-2 flex-wrap">
+              <Link
+                className="rounded-md px-5 py-3 bg-blue-500 text-black"
+                href={updateLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Update Event Details
+              </Link>
+              <Link
+                className="rounded-md px-5 py-3 bg-blue-500 text-black"
+                href={`/api/registrations?eventId=${event.sdc_id}`}
+              >
+                Download Participants List (CSV)
+              </Link>
+            </div>
           )}
         </div>
       </div>

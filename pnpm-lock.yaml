@@ -23,6 +23,9 @@ dependencies:
   '@types/react-qr-reader':
     specifier: ^2.1.7
     version: 2.1.7
+  csv-writer-browser:
+    specifier: ^1.0.0
+    version: 1.0.0
   dotenv:
     specifier: ^16.3.1
     version: 16.3.1
@@ -2610,6 +2613,10 @@ packages:
 
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+
+  /csv-writer-browser@1.0.0:
+    resolution: {integrity: sha512-fqbieG/ZAWwfsGnVCBTDctDyKORjNXXKelvBX6UX/M+iFJKAnLxueXysVfuLYXonablzGqZ9jnNIIcOCuKuUFA==}
+    dev: false
 
   /culori@3.3.0:
     resolution: {integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==}
