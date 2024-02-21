@@ -60,7 +60,11 @@ export async function findEventById(sdcId: number) {
 
   const event = events.find(
     (event) =>
-      event.sdc_id && event.sdc_id.split(",").map(parseInt).includes(sdcId)
+      event.sdc_id &&
+      event.sdc_id
+        .split(",")
+        .map((id) => parseInt(id))
+        .includes(sdcId)
   );
 
   if (!event) {

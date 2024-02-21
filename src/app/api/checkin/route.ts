@@ -89,7 +89,10 @@ export const POST: (req: NextRequest) => Promise<Response> = auth(
         const event = events.find(
           (e) =>
             e.sdc_id &&
-            e.sdc_id.split(",").map(parseInt).includes(ticket.event_id)
+            e.sdc_id
+              .split(",")
+              .map((id) => parseInt(id))
+              .includes(ticket.event_id)
         );
 
         if (!event) {

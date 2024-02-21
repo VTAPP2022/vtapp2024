@@ -86,7 +86,10 @@ export async function fetchTicketDetails(applicantInfo: TicketSearchParams) {
     const event = eventsConfigured.find(
       (e) =>
         e.sdc_id &&
-        e.sdc_id.split(",").map(parseInt).includes(eventRegistered.eventId)
+        e.sdc_id
+          .split(",")
+          .map((id) => parseInt(id))
+          .includes(eventRegistered.eventId)
     );
 
     if (!event) {
