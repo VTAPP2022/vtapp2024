@@ -22,14 +22,6 @@ export const {
   ],
 });
 
-export const SUPER_ADMIN_EMAILS = [
-  "akhilesh.20bce7602@vitap.ac.in",
-  "pranay.20bci7061@vitap.ac.in",
-  "indurthi.20bcn7099@vitap.ac.in",
-  "yagnesh.20bci7059@vitap.ac.in",
-  "chakkaravarthy.sibi@vitap.ac.in",
-];
-
 export async function fetchAdminDetails(
   session?: Session | null,
   fetchSession: boolean = true
@@ -64,12 +56,10 @@ export async function fetchAdminDetails(
   const eventsFromAirtable = await fetchEventsFromAirtable(true);
   const events = eventsFromAirtable
     .filter((event) => {
-      return (
-        event.admin_1_email_address === emailAddress ||
-        event.admin_2_email_address === emailAddress ||
-        event.submitted_by === emailAddress ||
-        SUPER_ADMIN_EMAILS.includes(emailAddress)
-      );
+      return event.admins
+        .split(",")
+        .map((adminEmail) => adminEmail.trim().toLowerCase())
+        .includes(emailAddress.toLowerCase());
     })
     .sort((a, b) => a.event_name.localeCompare(b.event_name));
 
