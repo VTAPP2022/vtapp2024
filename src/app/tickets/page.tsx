@@ -38,7 +38,7 @@ export default function Tickets() {
             "
             id="applicationNumber"
             name="applicationNumber"
-            placeholder="VITAP2427XX"
+            placeholder="VTAP2XXXXX"
             required
           />
         </div>

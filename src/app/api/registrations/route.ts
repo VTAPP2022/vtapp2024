@@ -87,9 +87,7 @@ export async function GET(request: NextRequest) {
     }
 
     const event = events.find(
-      (event) =>
-        event.sdc_id &&
-        event.sdc_id.split(",").map((id) => parseInt(id)) === eventIds // This might be problematic later
+      (event) => event.sdc_id && event.sdc_id === eventIdString // This might be problematic later
     );
 
     if (!event) {
