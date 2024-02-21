@@ -55,10 +55,12 @@ export async function findEventBySlug(slug: string) {
   return event;
 }
 
-export async function findEventById(eventId: number) {
+export async function findEventById(sdcId: number) {
   const events = await fetchEventsFromAirtable();
 
-  const event = events.find((event) => event.event_id === eventId);
+  const event = events.find((event) =>
+    event.sdc_id.split(",").map(parseInt).includes(sdcId)
+  );
 
   if (!event) {
     notFound();

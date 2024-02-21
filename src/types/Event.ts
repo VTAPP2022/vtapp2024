@@ -20,6 +20,7 @@ interface AirtableImage {
 
 export interface AirtableEvent {
   event_id: number;
+  sdc_id: string;
   event_name: string;
   event_type: EventType;
   price: number;

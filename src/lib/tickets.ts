@@ -83,8 +83,8 @@ export async function fetchTicketDetails(applicantInfo: TicketSearchParams) {
 
   // add event details to eventsRegistered
   eventsRegistered.forEach((eventRegistered) => {
-    const event = eventsConfigured.find(
-      (e) => e.event_id === eventRegistered.eventId
+    const event = eventsConfigured.find((e) =>
+      e.sdc_id.split(",").map(parseInt).includes(eventRegistered.eventId)
     );
 
     if (!event) {
