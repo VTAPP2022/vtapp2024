@@ -86,8 +86,10 @@ export const POST: (req: NextRequest) => Promise<Response> = auth(
         const ticket = ticketExists
           .rows[0] as unknown as QRCodeRowManualDrizzle;
 
-        const event = events.find((e) =>
-          e.sdc_id.split(",").map(parseInt).includes(ticket.event_id)
+        const event = events.find(
+          (e) =>
+            e.sdc_id &&
+            e.sdc_id.split(",").map(parseInt).includes(ticket.event_id)
         );
 
         if (!event) {
