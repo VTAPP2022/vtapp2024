@@ -15,15 +15,8 @@ function Buttons() {
         <span>Register now</span>
       </Link>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <Link
-        className="button button--mimas"
-        href="https://drive.google.com/file/d/1cQrQi80YcAwKZEKZXhTUYP2baVE3FDRM/view?usp=drivesdk"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span className="bflex">
-          Brochure &nbsp; <Image src={downloadIcon} alt="download icon" />
-        </span>
+      <Link className="button button--mimas" href="/tickets">
+        <span className="bflex">Grab Tickets</span>
       </Link>
     </div>
   );
