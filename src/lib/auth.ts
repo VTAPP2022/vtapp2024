@@ -27,6 +27,7 @@ export const SUPER_ADMIN_EMAILS = [
   "pranay.20bci7061@vitap.ac.in",
   "indurthi.20bcn7099@vitap.ac.in",
   "yagnesh.20bci7059@vitap.ac.in",
+  "chakkaravarthy.sibi@vitap.ac.in",
 ];
 
 export async function fetchAdminDetails(
